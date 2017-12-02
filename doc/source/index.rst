@@ -10,8 +10,12 @@ Welcome to accounting's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   notes/gaap
    notes/transaction
    api/transaction
+
+.. autosummary:: transaction
+   :toctree:
 
 
 
