@@ -1,3 +1,5 @@
+accounting.egg-info/
+dist/
 build/
 __pycache__/
 .cache/
