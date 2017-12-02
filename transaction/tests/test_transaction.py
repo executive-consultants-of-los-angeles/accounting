@@ -1,3 +1,4 @@
+import pytest
 
-class TransactionTestCase():
-
+def test_transaction():
+    assert False
