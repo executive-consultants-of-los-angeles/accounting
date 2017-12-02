@@ -16,8 +16,8 @@ setup(
     description = ("Accounting software for accountants."),
     license = "The Unlicense",
     keywords = "accounting",
-    packages=['accounting', 'tests'],
-    long_description=read('readme'),
+    packages=['transaction', 'transaction.tests'],
+    long_description=read('readme.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
