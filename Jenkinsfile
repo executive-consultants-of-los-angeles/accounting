@@ -14,7 +14,4 @@ pipeline {
       }
     }
   }
-  environment {
-    PATH = '/home/jenkins/.py3/bin:$PATH'
-  }
 }
