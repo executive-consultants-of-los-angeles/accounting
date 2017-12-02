@@ -18,6 +18,8 @@ setup(
     keywords = "accounting",
     packages=['transaction', 'transaction.tests'],
     long_description=read('readme.md'),
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest', 'nose'],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """Test cases for the transaction class."""
-import pytest
+
 
 class TransactionTestClass(object):
     """Transaction test cases."""
