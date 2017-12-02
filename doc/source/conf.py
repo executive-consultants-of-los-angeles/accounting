@@ -20,6 +20,8 @@
 # import os
 import sys
 sys.path.insert(0, '/srv/accounting')
+sys.path.insert(0, '/srv/accounting/transaction')
+sys.path.insert(0, '/srv/accounting/transaction/tests')
 
 
 # -- General configuration ------------------------------------------------
