@@ -1,4 +1,5 @@
 accounting.egg-info/
+*.swp
 dist/
 build/
 __pycache__/
