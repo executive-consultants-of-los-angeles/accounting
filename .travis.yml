@@ -10,9 +10,9 @@ addons:
       - sourceline:
           'deb http://cz.archive.ubuntu.com/ubuntu xenial main universe'
     packages:
-      - build-essential
       - python3
 install:
+  - sudo pip install virtualenv
   - virtualenv -p /usr/bin/python3 .py
   - .py/bin/pip install pytest 
   - .py/bin/pip install coverage 
