@@ -10,6 +10,9 @@ Welcome to accounting's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   api/transaction
+   notes/index
+
 
 
 Indices and tables
