@@ -1,5 +1,7 @@
 import yaml
 
-f = open('yml/transaction.yml', 'r')
+f = open('/srv/accounting/transaction/yml/transaction.yml', 'r')
 d = f.read()
 f.close()
+
+print(d)
