@@ -1,0 +1,7 @@
+---
+- transaction:
+    amount: 4
+    left_account: recievable
+    right_account: payable
+    date: 2017-12-01
+...
