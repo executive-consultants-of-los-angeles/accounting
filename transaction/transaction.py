@@ -1,5 +1,5 @@
 import yaml
 
-f = open('transaction.yml', 'r')
+f = open('yml/transaction.yml', 'r')
 d = f.read()
 f.close()
