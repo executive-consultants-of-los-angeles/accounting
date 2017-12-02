@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'jenkins-alpha'
+    }
+    
+  }
   stages {
     stage('pytest') {
       steps {
