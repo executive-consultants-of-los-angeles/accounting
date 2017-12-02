@@ -1,0 +1,24 @@
+---
+language: python3
+sudo: required
+cache:
+  pip: 'yes'
+  yarn: 'yes'
+addons:
+  apt:
+    sources:
+      - sourceline:
+          'deb http://cz.archive.ubuntu.com/ubuntu xenial main universe'
+    packages:
+      - build-essential
+install:
+  - pip install pytest 
+  - pip install coverage 
+  - pip install nose 
+script:
+  - pytest 
+  - nose
+on_success: never
+on_failure: never
+...
+# vim: ft=ansible:
