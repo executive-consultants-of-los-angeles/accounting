@@ -14,7 +14,7 @@ install:
   - .py/bin/pip install nose 
 script:
   - pytest 
-  - nose
+  - nosetests
 on_success: never
 on_failure: never
 ...
