@@ -4,14 +4,8 @@ sudo: required
 cache:
   pip: 'yes'
   yarn: 'yes'
-addons:
-  apt:
-    sources:
-      - sourceline:
-          'deb http://cz.archive.ubuntu.com/ubuntu xenial main universe'
-    packages:
-      - python3
 install:
+  - sudo apt-get -y install python3.6
   - sudo pip install virtualenv
   - virtualenv -p /usr/bin/python3 .py
   - .py/bin/pip install pytest 
