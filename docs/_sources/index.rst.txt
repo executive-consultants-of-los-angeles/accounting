@@ -12,7 +12,6 @@ Accounting Software for Accountants
    notes/gaap
    notes/transaction
    modules/transaction
-   api/transaction
 
 .. autosummary::
    :toctree: transaction
