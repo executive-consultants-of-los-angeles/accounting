@@ -12,6 +12,7 @@ install:
   - .py/bin/pip install pytest 
   - .py/bin/pip install coverage 
   - .py/bin/pip install nose 
+  - .py/bin/pip install -e .
 script:
   - pytest 
   - nosetests
