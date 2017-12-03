@@ -1,5 +1,5 @@
 """Test cases for the transaction class."""
-import pytest
+import transaction.transaction as trans
 
 
 class TestTransaction(object):
@@ -13,23 +13,24 @@ class TestTransaction(object):
 
        :description: Absolute path to yml file for import.
     """
-    transaction = {}
+    transaction = trans.Transaction()
     yml_file = u''
 
     def setUp(self):
         """Set up the test object for transactions."""
-        self.transaction = transaction.Transaction()
+        self.transaction = trans.Transaction()
         self.yml_file = '/srv/accounting/transaction/yml/transaction.yml'
         return
-    
+
     def test_transaction_class(self):
         """Test that the Transaction class instantiates."""
         transaction_type = type(self.transaction)
-        assert isinstance(self.transaction, transaction_type) 
+        assert isinstance(self.transaction, transaction_type)
 
     def test_load_from_yml(self):
         """Test that data can be loaded from yaml files."""
-        assert False
+        transactions = self.transaction.load_from_yaml()
+        assert isinstance(transactions, dict)
 
     def test_transaction_date_format(self):
         """Make sure that dates are formatted correctly."""
