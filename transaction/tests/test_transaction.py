@@ -1,7 +1,8 @@
 """Test cases for the transaction class."""
+import pytest
 
 
-class TransactionTestClass(object):
+class TestTransaction(object):
     """Transaction test cases."""
     def setUp(self):
         """Set up the test object for transactions."""
