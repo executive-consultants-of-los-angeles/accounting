@@ -3,14 +3,11 @@ pipeline {
   stages {
     stage('pytest') {
       steps {
-        catchError() {
-          sh '''source /mnt/pg/home/jenkins/.py3/bin/activate
+        sh '''source /mnt/pg/home/jenkins/.py3/bin/activate
 pip install pyyaml
 pip install -e .
-pytest --junitxml=docs/reports/pytest-$BUILD_NUMBER.xml'''
-          junit(allowEmptyResults: true, keepLongStdio: true, testResults: 'docs/reports/*.xml')
-        }
-        
+pytest --junitxml=docs/reports/pytest-$BUILD_NUMBER.xml || true'''
+        junit(allowEmptyResults: true, keepLongStdio: true, testResults: 'docs/reports/*.xml')
       }
     }
     stage('nosetests') {
@@ -18,7 +15,7 @@ pytest --junitxml=docs/reports/pytest-$BUILD_NUMBER.xml'''
         sh '''source /mnt/pg/home/jenkins/.py3/bin/activate
 pip install pyyaml
 pip install -e .
-nosetests --with-xunit --xunit-file=docs/reports/nose-$BUILD_NUMBER.xml'''
+nosetests --with-xunit --xunit-file=docs/reports/nose-$BUILD_NUMBER.xml || true'''
         junit(testResults: 'docs/reports/*xml', allowEmptyResults: true, keepLongStdio: true)
       }
     }
