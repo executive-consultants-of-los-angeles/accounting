@@ -3,10 +3,21 @@ import pytest
 
 
 class TestTransaction(object):
-    """Transaction test cases."""
+    """Transaction test cases.
+
+    .. attribute:: transaction
+
+       :description: Transaction to be tested
+
+    .. attribute:: yml_path
+
+       :description: Absolute path to yml file for import.
+    """
+    transaction = {}
+    yml_file = u''
+
     def setUp(self):
         """Set up the test object for transactions."""
-
         return
     
     def test_transaction_class(self):
