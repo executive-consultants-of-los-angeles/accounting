@@ -2,7 +2,6 @@ accounting.egg-info/
 .eggs/
 *.swp
 dist/
-build/
+/srv/accounting/build/
 __pycache__/
 .cache/
-!docs/
