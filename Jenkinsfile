@@ -20,4 +20,7 @@ nosetests --with-xunit --xunit-file=docs/reports/nose-$BUILD_NUMBER.xml || true'
       }
     }
   }
+  environment {
+    YML_PATH = '$WORKSPACE/transaction/yml/'
+  }
 }
