@@ -11,13 +11,13 @@ Subpackages
 Submodules
 ----------
 
-transaction\.transaction module
+Transaction Class
 -------------------------------
 
-.. automodule:: transaction
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. currentmodule:: transaction
 
-.. autosummary:: transaction
-   :toctree:
+.. automodule:: transaction
+   :noindex:
+   :members:
+   :undoc-members:
+   :show-inheritance:

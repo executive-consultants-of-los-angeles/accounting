@@ -1,13 +1,13 @@
-transaction\.tests package
+Transaction Tests
 ==========================
 
 Submodules
 ----------
 
-transaction\.tests\.test\_transaction module
+Transaction Tests
 --------------------------------------------
 
-.. automodule:: transaction.tests.test_transaction
+.. automodule:: tests.test_transaction
     :members:
     :undoc-members:
     :show-inheritance:
@@ -16,7 +16,9 @@ transaction\.tests\.test\_transaction module
 Module contents
 ---------------
 
-.. automodule:: transaction.tests
+.. currentmodule:: transaction.tests
+
+.. automodule:: tests
     :members:
     :undoc-members:
     :show-inheritance:
