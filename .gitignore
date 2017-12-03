@@ -1,4 +1,5 @@
 accounting.egg-info/
+.eggs/
 *.swp
 dist/
 build/
