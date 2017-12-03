@@ -3,9 +3,13 @@ pipeline {
   stages {
     stage('pytest') {
       steps {
-        sh '''source /mnt/pg/home/jenkins/.py3/bin/activate
-pytest --junitxml=docs/reports/$BUILD_NUMBER.xml'''
-        junit(testResults: 'docs/results/*xml', allowEmptyResults: true, keepLongStdio: true)
+        catchError() {
+          sh '''source /mnt/pg/home/jenkins/.py3/bin/activate
+pip install -e .
+pytest --junitxml=docs/reports/pytest-$BUILD_NUMBER.xml'''
+          junit(allowEmptyResults: true, keepLongStdio: true, testResults: 'docs/reports/*.xml')
+        }
+        
       }
     }
     stage('nosetests') {
