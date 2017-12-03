@@ -3,13 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to accounting's documentation!
-======================================
+Accounting Software for Accountants
+===================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   notes/gaap
+   notes/transaction
+   modules/transaction
+   api/transaction
+
+.. autosummary::
+   :toctree: transaction
 
 
 Indices and tables

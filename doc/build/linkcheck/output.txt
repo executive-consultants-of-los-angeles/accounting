@@ -1,0 +1,1 @@
+.eggs/pytest_runner-3.0-py3.6.egg/EGG-INFO/DESCRIPTION.rst:None: [redirected permanently] http://travis-ci.org/pytest-dev/pytest-runner to https://travis-ci.org/pytest-dev/pytest-runner

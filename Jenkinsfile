@@ -4,14 +4,20 @@ pipeline {
     stage('pytest') {
       steps {
         sh '''source /mnt/pg/home/jenkins/.py3/bin/activate
-pytest --junitxml=docs/reports/$BUILD_NUMBER.xml'''
-        junit(testResults: 'docs/results/*xml', allowEmptyResults: true, keepLongStdio: true)
+pip install pyyaml
+pip install -e .
+export YML_PATH=$WORKSPACE/transaction/yml/
+pytest --junitxml=docs/reports/pytest-$BUILD_NUMBER.xml || true'''
+        junit(allowEmptyResults: true, keepLongStdio: true, testResults: 'docs/reports/*.xml')
       }
     }
     stage('nosetests') {
       steps {
         sh '''source /mnt/pg/home/jenkins/.py3/bin/activate
-nosetests --with-xunit --xunit-file=docs/reports/nose-$BUILD_NUMBER.xml'''
+pip install pyyaml
+pip install -e .
+export YML_PATH=$WORKSPACE/transaction/yml/
+nosetests --with-xunit --xunit-file=docs/reports/nose-$BUILD_NUMBER.xml || true'''
         junit(testResults: 'docs/reports/*xml', allowEmptyResults: true, keepLongStdio: true)
       }
     }
