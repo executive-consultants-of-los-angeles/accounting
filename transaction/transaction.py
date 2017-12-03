@@ -1,7 +1,13 @@
 import yaml
 
-f = open('/srv/accounting/transaction/yml/transaction.yml', 'r')
-d = f.read()
-f.close()
+class Transaction(object):
+    """A class for modeling accounting transactions."""
 
-print(d)
+    def __init__(self):
+        return
+
+    def load_yaml(self):
+        f = open('/srv/accounting/transaction/yml/transaction.yml', 'r')
+        d = f.read()
+        f.close()
+        print(d)

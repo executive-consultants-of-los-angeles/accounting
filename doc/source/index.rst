@@ -14,9 +14,8 @@ Welcome to accounting's documentation!
    notes/transaction
    api/transaction
 
-.. autosummary:: transaction
-   :toctree:
-
+.. autosummary::
+   :toctree: transaction
 
 
 Indices and tables
