@@ -18,11 +18,17 @@ class TestTransaction(object):
 
     def setUp(self):
         """Set up the test object for transactions."""
+        self.transaction = transaction.Transaction()
+        self.yml_file = '/srv/accounting/transaction/yml/transaction.yml'
         return
     
     def test_transaction_class(self):
-        """Test that the TransactionClass instantiates."""
-        assert False 
+        """Test that the Transaction class instantiates."""
+        print(self.transaction)
+        print(type(self.transaction))
+
+        transaction_type = type(self.transaction)
+        assert isinstance(self.transaction, transaction_type) 
 
     def test_load_from_yml(self):
         """Test that data can be loaded from yaml files."""
