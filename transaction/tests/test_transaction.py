@@ -1,5 +1,5 @@
 """Test cases for the transaction class."""
-import transaction.transaction as trans
+import transaction.transaction as transaction
 
 
 class TestTransaction(object):
@@ -13,12 +13,12 @@ class TestTransaction(object):
 
        :description: Absolute path to yml file for import.
     """
-    transaction = trans.Transaction()
+    transaction = transaction.Transaction()
     yml_file = u''
 
     def setUp(self):
         """Set up the test object for transactions."""
-        self.transaction = trans.Transaction()
+        self.transaction = transaction.Transaction()
         self.yml_file = '/srv/accounting/transaction/yml/transaction.yml'
         return
 
