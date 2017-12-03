@@ -1,15 +1,14 @@
 ---
-transactions:
-  - amount: 4
-    left_account: recievable
-    right_account: payable
-    date: 2017-12-01
-  - amount: 10.234
-    left_account: recievable
-    right_account: payable
-    date: 2017-12-02
-  - amount: 23.111
-    left_account: assets
-    right_account: expenses
-    date: 2017-12-03
+- amount: 4
+  left_account: recievable
+  right_account: payable
+  date: 2017-12-01
+- amount: 10.234
+  left_account: recievable
+  right_account: payable
+  date: 2017-12-02
+- amount: 23.111
+  left_account: assets
+  right_account: expenses
+  date: 2017-12-03
 ...

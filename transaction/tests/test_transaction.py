@@ -30,9 +30,11 @@ class TestTransaction(object):
     def test_load_from_yml(self):
         """Test that data can be loaded from yaml files."""
         transactions = self.transaction.load_from_yaml()
+        print(type(transactions))
         assert isinstance(transactions, list)
 
         for item in transactions:
+            print(type(item))
             assert isinstance(item, dict)
 
     def test_transaction_date_format(self):
