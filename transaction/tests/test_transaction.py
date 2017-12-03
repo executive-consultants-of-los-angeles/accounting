@@ -1,4 +1,5 @@
 """Test cases for the transaction class."""
+import datetime
 import transaction.transaction as transaction
 
 
@@ -14,12 +15,14 @@ class TestTransaction(object):
        :description: Absolute path to yml file for import.
     """
     transaction = transaction.Transaction()
+    transactions = []
     yml_file = u''
 
     def setUp(self):
         """Set up the test object for transactions."""
         self.transaction = transaction.Transaction()
         self.yml_file = '/srv/accounting/transaction/yml/transaction.yml'
+        self.transactions = self.transaction.load_from_yaml()
         return
 
     def test_transaction_class(self):
@@ -30,16 +33,15 @@ class TestTransaction(object):
     def test_load_from_yml(self):
         """Test that data can be loaded from yaml files."""
         transactions = self.transaction.load_from_yaml()
-        print(type(transactions))
         assert isinstance(transactions, list)
 
         for item in transactions:
-            print(type(item))
             assert isinstance(item, dict)
 
     def test_transaction_date_format(self):
         """Make sure that dates are formatted correctly."""
-        assert False
+        for item in self.transactions:
+            assert isinstance(item.get('date'), datetime.date)
 
     def test_transaction_left_account(self):
         """Ensure that every transaction has a left account value."""
