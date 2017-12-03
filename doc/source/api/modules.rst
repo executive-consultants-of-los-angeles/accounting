@@ -1,5 +1,5 @@
-transaction
-===========
+accounting
+==========
 
 .. toctree::
    :maxdepth: 4

@@ -4,10 +4,10 @@ transaction\.tests package
 Submodules
 ----------
 
-transaction\.tests\.transaction\_test module
+transaction\.tests\.test\_transaction module
 --------------------------------------------
 
-.. automodule:: transaction.tests.transaction_test
+.. automodule:: transaction.tests.test_transaction
     :members:
     :undoc-members:
     :show-inheritance:
