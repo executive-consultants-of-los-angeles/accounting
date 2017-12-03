@@ -45,13 +45,15 @@ class TestTransaction(object):
 
     def test_transaction_left_account(self):
         """Ensure that every transaction has a left account value."""
-        assert False
+        for item in self.transactions:
+            assert 'left_account' in item.keys()
 
     def test_transaction_right_account(self):
         """Make sure every transction has a right account or None."""
-        assert False
+        for item in self.transactions:
+            assert 'right_account' in item.keys()
 
-    def test_transaction_amount_is_float(self):
+    def test_transaction_amount_format(self):
         """All trnsaction amounts should be float precision 3."""
         assert False
 
