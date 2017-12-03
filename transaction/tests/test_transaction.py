@@ -58,15 +58,17 @@ class TestTransaction(object):
         """All trnsaction amounts should be float precision 3."""
         for item in self.transactions:
             amount = "{amount:.3f}".format(amount=item.get('amount'))
-            print(amount)
             amount_decimal = decimal.Decimal(amount)
             decimal_places = amount_decimal.as_tuple().exponent
             assert decimal_places == -3
 
     def test_transaction_number(self):
         """Every transaction needs a unique id."""
-        assert False
+        ids = [item.get('tid') for item in self.transactions]
+        for index, item in enumerate(self.transactions):
+            assert ids[index] == item.get('tid')
 
     def test_transaction_name(self):
         """Every transaction needs a description."""
-        assert False
+        for item in self.transactions:
+            assert 'description' in item.keys()
