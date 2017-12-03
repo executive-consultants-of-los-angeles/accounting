@@ -30,7 +30,10 @@ class TestTransaction(object):
     def test_load_from_yml(self):
         """Test that data can be loaded from yaml files."""
         transactions = self.transaction.load_from_yaml()
-        assert isinstance(transactions, dict)
+        assert isinstance(transactions, list)
+
+        for item in transactions:
+            assert isinstance(item, dict)
 
     def test_transaction_date_format(self):
         """Make sure that dates are formatted correctly."""
