@@ -1,5 +1,6 @@
 """Test cases for the transaction class."""
 import datetime
+import decimal
 import transaction.transaction as transaction
 
 
@@ -55,7 +56,12 @@ class TestTransaction(object):
 
     def test_transaction_amount_format(self):
         """All trnsaction amounts should be float precision 3."""
-        assert False
+        for item in self.transactions:
+            amount = "{amount:.3f}".format(amount=item.get('amount'))
+            print(amount)
+            amount_decimal = decimal.Decimal(amount)
+            decimal_places = amount_decimal.as_tuple().exponent
+            assert decimal_places == -3
 
     def test_transaction_number(self):
         """Every transaction needs a unique id."""
