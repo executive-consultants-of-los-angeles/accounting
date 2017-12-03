@@ -24,9 +24,6 @@ class TestTransaction(object):
     
     def test_transaction_class(self):
         """Test that the Transaction class instantiates."""
-        print(self.transaction)
-        print(type(self.transaction))
-
         transaction_type = type(self.transaction)
         assert isinstance(self.transaction, transaction_type) 
 
