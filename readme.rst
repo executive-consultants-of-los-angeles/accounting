@@ -10,7 +10,7 @@ accounting
    :target: https://coveralls.io/github/executive-consultants-of-los-angeles/accounting?branch=master
 
 .. image:: https://api.codeclimate.com/v1/badges/eaee4268b4e1dd2befb5/maintainability
-      :target: https://codeclimate.com/github/executive-consultants-of-los-angeles/accounting/maintainability
+   :target: https://codeclimate.com/github/executive-consultants-of-los-angeles/accounting/maintainability
    :alt: Maintainability
 
 .. image:: https://api.codeclimate.com/v1/badges/eaee4268b4e1dd2befb5/test_coverage
