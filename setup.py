@@ -23,7 +23,7 @@ setup(
     license="The Unlicense",
     keywords="accounting",
     packages=['transaction', 'transaction.tests'],
-    long_description=read('readme.md'),
+    long_description=read('readme.rst'),
     setup_requires=['pytest-runner'],
     tests_require=['pytest', 'nose'],
     classifiers=[
