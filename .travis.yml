@@ -1,10 +1,17 @@
 ---
 language: python
 sudo: required
+env:
+  global:
+  - CC_TEST_REPORTER_ID=82428da430f003a16e79bb4da19d1f4b045712dee9c8dff967462c6580a1b567
 cache:
   pip: 'yes'
   yarn: 'yes'
-install:
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+    > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - "./cc-test-reporter before-build"
   - sudo apt-get -y update
   - sudo apt-get -y install python3
   - sudo pip install virtualenv
@@ -15,8 +22,13 @@ install:
   - .py/bin/pip install nose 
   - .py/bin/pip install -e .
 script:
+  - .py/bin/coverage run setup.py test
+  - .py/bin/coverage xml
   - .py/bin/pytest 
   - .py/bin/nosetests
+after_script:
+  - "./cc-test-reporter after-build -t coverage.py --exit-code $TRAVIS_TEST_RESULT"
+  - "./cc-test-reporter after-build -t coverage.py --exit-code $TRAVIS_TEST_RESULT modules/humanresources/coverage.xml"
 on_success: never
 on_failure: never
 ...
