@@ -22,6 +22,7 @@ before_script:
   - .py/bin/pip install nose 
   - .py/bin/pip install -e .
 script:
+  - .py/bin/coverage run setup.py test
   - .py/bin/pytest 
   - .py/bin/nosetests
 after_script:
