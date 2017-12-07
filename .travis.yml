@@ -23,6 +23,7 @@ before_script:
   - .py/bin/pip install -e .
 script:
   - .py/bin/coverage run setup.py test
+  - .py/bin/coverage xml
   - .py/bin/pytest 
   - .py/bin/nosetests
 after_script:
