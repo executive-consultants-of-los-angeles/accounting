@@ -1,17 +1,17 @@
 ---
 - name: Accounts Receivable
-  type: asset
+  type: 0
   number: 100000
 - name: Accounts Payable 
-  type: liability
+  type: 1
   number: 500000
 - name: Equity 
-  type: equity
+  type: 2
   number: 600000
 - name: Revenue
-  type: revenue
+  type: 3
   number: 200000
 - name: Expenses
-  type: expense
+  type: 4
   number: 700000
 ...
