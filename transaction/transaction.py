@@ -32,6 +32,10 @@ class Transaction(object):
         """Return the right (debit) account."""
         return self.right_account
 
+    def transaction_date(self):
+        """Return date of transaction."""
+        return self.date
+
     def transaction_description(self):
         """Return the description."""
         return self.description
