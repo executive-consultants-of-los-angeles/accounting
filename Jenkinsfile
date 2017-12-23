@@ -1,6 +1,5 @@
 pipeline {
   agent any
-  git url: 'git@github.com:executive-consultants-of-los-angeles/accounting.git'
   stages {
     stage('pytest') {
       steps {
