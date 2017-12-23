@@ -4,7 +4,7 @@ pipeline {
     stage('pytest') {
       steps {
         catchError() {
-          withPythonEnv('three') {
+          withPythonEnv(pythonInstallation: 'three') {
             pysh 'pip install pyyaml pytest pytest-runner'
             pysh 'python setup.py build'
             pysh 'python setup.py install'
@@ -14,13 +14,18 @@ pipeline {
             pysh 'pytest --junitxml=docs/reports/pytest-$BUILD_NUMBER.xml || true'
             junit(allowEmptyResults: true, keepLongStdio: true, testResults: 'docs/reports/*.xml')
           }
+          
         }
+        
       }
     }
     stage('coverage') {
+      environment {
+        YML_PATH = 'yml'
+      }
       steps {
         catchError() {
-          withPythonEnv('three') {
+          withPythonEnv(pythonInstallation: 'three') {
             pysh 'pip install pyyaml pytest pytest-runner coverage'
             pysh 'python setup.py build'
             pysh 'python setup.py install'
@@ -31,7 +36,9 @@ pipeline {
             pysh 'coverage xml'
             junit(testResults: 'docs/reports/*xml', allowEmptyResults: true, keepLongStdio: true)
           }
+          
         }
+        
       }
     }
   }
