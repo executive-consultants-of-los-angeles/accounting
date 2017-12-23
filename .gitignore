@@ -1,4 +1,5 @@
 accounting.egg-info/
+*.pyc
 coverage.xml
 build/
 .eggs/
