@@ -4,6 +4,5 @@ build/
 .eggs/
 *.swp
 dist/
-./build/
 __pycache__/
 .cache/
