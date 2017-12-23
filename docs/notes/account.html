@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Overview: module code &#8212; accounting v0.0.1 documentation</title>
+    <title>Account &#8212; accounting v0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -39,10 +39,36 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>All modules for which code is available</h1>
-<ul><li><a href="tests/test_transaction.html">tests.test_transaction</a></li>
-<li><a href="transaction.html">transaction</a></li>
-</ul>
+  <div class="section" id="account">
+<h1>Account<a class="headerlink" href="#account" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-an-account">
+<h2>What is an account?<a class="headerlink" href="#what-is-an-account" title="Permalink to this headline">¶</a></h2>
+<p>A collection of related transactions that can be used to describe an aspect of a business.</p>
+</div>
+<div class="section" id="what-the-fundamental-parts-of-an-account">
+<h2>What the fundamental parts of an account?<a class="headerlink" href="#what-the-fundamental-parts-of-an-account" title="Permalink to this headline">¶</a></h2>
+<p>Name, number, type, transactions.</p>
+</div>
+<div class="section" id="what-are-the-qualities-of-an-account-that-can-be-tested">
+<h2>What are the qualities of an account that can be tested?<a class="headerlink" href="#what-are-the-qualities-of-an-account-that-can-be-tested" title="Permalink to this headline">¶</a></h2>
+<p>We can test the name for length and composition.</p>
+<p>We can test the number for correct placement in the chart of accounts.</p>
+<p>We can test the type for its presence in a pre-defined list.</p>
+<p>We can test the transactions elsewhere.</p>
+</div>
+<div class="section" id="how-do-we-test-these-qualities">
+<h2>How do we test these qualities?<a class="headerlink" href="#how-do-we-test-these-qualities" title="Permalink to this headline">¶</a></h2>
+<p>Names should contain only letters.</p>
+<p>Numbers should contain only numbers.</p>
+<p>Types should be one of the following: [asset, liability, equity, revenue, expense].</p>
+<div class="topic">
+<p class="topic-title first">Equation</p>
+<p>assets = liabilities + equity</p>
+<p>This makes accounts that can reconcile only those of the first three types.</p>
+</div>
+</div>
+</div>
+
 
           </div>
         </div>
@@ -76,6 +102,9 @@
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
+      |
+      <a href="../_sources/notes/account.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     
