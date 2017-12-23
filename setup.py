@@ -14,6 +14,7 @@ def read(fname):
     """
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
+
 setup(
     name="accounting",
     version="0.0.1",
@@ -22,7 +23,7 @@ setup(
     description=("Accounting software for accountants."),
     license="The Unlicense",
     keywords="accounting",
-    packages=['transaction', 'transaction.tests'],
+    packages=['account', 'account.tests', 'transaction', 'transaction.tests'],
     long_description=read('readme.rst'),
     setup_requires=['pytest-runner'],
     tests_require=['pytest', 'nose'],

@@ -11,6 +11,7 @@ Accounting Software for Accountants
 
    notes/gaap
    notes/transaction
+   notes/account
    modules/transaction
 
 .. autosummary::

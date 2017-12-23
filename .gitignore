@@ -1,7 +1,10 @@
 accounting.egg-info/
+.coverage
+*.pyc
+coverage.xml
+build/
 .eggs/
 *.swp
 dist/
-./build/
 __pycache__/
 .cache/
