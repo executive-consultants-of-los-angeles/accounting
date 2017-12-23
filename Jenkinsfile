@@ -37,9 +37,7 @@ pipeline {
             pysh 'coverage xml'
             junit(testResults: 'docs/reports/*xml', allowEmptyResults: true, keepLongStdio: true)
           }
-          
         }
-        
       }
     }
   }
