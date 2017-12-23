@@ -12,6 +12,10 @@ What the fundamental parts of an account?
 
 Name, number, type, transactions.
 
+.. note:: type
+
+   Type is a reserved word in Python, so we'll use kind instead.
+
 
 What are the qualities of an account that can be tested?
 --------------------------------------------------------
