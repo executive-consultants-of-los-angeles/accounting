@@ -20,5 +20,4 @@ def accounts():
     accounts_yml = yml_file.read()
     yml_file.close()
 
-    accounts = yaml.load(accounts_yml)
-    return accounts
+    return yaml.load(accounts_yml)
