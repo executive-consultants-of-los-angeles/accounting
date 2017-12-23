@@ -1,0 +1,17 @@
+---
+- name: Accounts Receivable
+  type: asset
+  number: 100000
+- name: Accounts Payable 
+  type: liability
+  number: 500000
+- name: Equity 
+  type: equity
+  number: 600000
+- name: Revenue
+  type: revenue
+  number: 200000
+- name: Expenses
+  type: expense
+  number: 700000
+...
