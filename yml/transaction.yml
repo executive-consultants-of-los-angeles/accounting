@@ -16,35 +16,47 @@
   right_account: Accounts Payable
   description: Payment from client.
   date: 2017-12-02
+  tid: 3
 - amount: 10.234
   left_account: Accounts Receivable
   right_account: Accounts Payable
   description: Payment from client.
   date: 2017-12-02
+  tid: 4
 - amount: 23.111
   left_account: Accounts Payable 
   right_account: Revenue
   description: Utilities.
   date: 2017-12-03
-  tid: 3
+  tid: 5
 - amount: 10.234
   left_account: Expenses
   right_account: Accounts Payable
   description: Payment from client.
   date: 2017-12-02
+  tid: 6
 - amount: 10.234
   left_account: Equity 
   right_account: Revenue
   description: Payment from client.
   date: 2017-12-02
+  tid: 7
 - amount: 10.234
   left_account: Expenses
   right_account: Revenue
   description: Payment from client.
   date: 2017-12-02
+  tid: 8
 - amount: 10.234
   left_account: Accounts Receivable
   right_account: Equity
   description: Payment from client.
   date: 2017-12-02
+  tid: 9
+- amount: 10.234
+  left_account: Equity 
+  right_account: Accounts Payable
+  description: Payment from client.
+  date: 2017-12-02
+  tid: 10
 ...
