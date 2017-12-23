@@ -20,13 +20,11 @@ before_script:
   - .py/bin/pip install pytest
   - .py/bin/pip install pyyaml
   - .py/bin/pip install coverage
-  - .py/bin/pip install nose
   - .py/bin/pip install -e .
 script:
   - .py/bin/coverage run setup.py test
   - .py/bin/coverage xml
   - .py/bin/pytest
-  - .py/bin/nosetests
 after_script:
   - "./cc-test-reporter after-build -t coverage.py --exit-code $TRAVIS_TEST_RESULT"
   - "./cc-test-reporter after-build -t coverage.py --exit-code $TRAVIS_TEST_RESULT modules/humanresources/coverage.xml"
