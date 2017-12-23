@@ -3,7 +3,7 @@ from account.account import Account
 
 
 class TestAccount(object):
-
+    """Test class for account module."""
     def test_account_object(self, account):
         """Test account fixture object."""
         assert isinstance(account, Account)
@@ -13,7 +13,7 @@ class TestAccount(object):
         for item in accounts:
             account = Account()
             account.name = item.get('name')
-            account_name = account.get_name()
+            account_name = account.account_name()
 
             assert isinstance(account.name, str)
             assert isinstance(account_name, str)
@@ -25,10 +25,19 @@ class TestAccount(object):
         for item in accounts:
             account = Account()
             account.kind = account.kind
+            kind = account.account_kind()
 
-        assert isinstance(account.kind, int)
-        assert kinds[account.kind] in kinds
+            assert isinstance(kind, int)
+            assert kinds[kind] in kinds
+            assert isinstance(account.kind, int)
+            assert kinds[account.kind] in kinds
 
-    def test_account_number(self):
-        """The account number should be an integer."""
-        assert False
+    def test_account_number(self, accounts):
+        """The account number should be integer."""
+        for item in accounts:
+            account = Account()
+            account.number = item.get('number')
+            number = account.account_number()
+
+            assert isinstance(number, int)
+            assert isinstance(account.number, int)
