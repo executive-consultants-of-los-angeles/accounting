@@ -1,4 +1,6 @@
 accounting.egg-info/
+coverage.xml
+build/
 .eggs/
 *.swp
 dist/
