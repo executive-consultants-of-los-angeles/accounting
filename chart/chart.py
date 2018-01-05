@@ -14,7 +14,8 @@ class Chart(object):
         chart = yaml.load(
             open('{}/chart.yml'.format(
                 os.environ.get('YML_PATH')), 'r')
-            )
+            )[0]
+        print(chart)
 
         self.name = chart.get('name')
         self.accounts = chart.get('accounts')
