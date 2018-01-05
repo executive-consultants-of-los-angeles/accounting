@@ -22,11 +22,11 @@ class TestAccount(object):
             assert isinstance(account_name, str)
 
     def test_account_type(self, accounts):
-        """Account types should be
-        [asset, liability, equity, revenue, expense."""
+        """Test account types."""
         kinds = ['asset', 'liability', 'equity', 'revenue', 'expense']
         for account in accounts:
-            account.kind = account.kind
+            print(account)
+            account.kind = account.get('kind')
             kind = account.account_kind()
 
             assert isinstance(kind, int)
