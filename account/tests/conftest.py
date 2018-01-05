@@ -8,6 +8,7 @@ from account.account import Account
 
 @pytest.fixture(scope='session')
 def account():
+    """Return an Account object."""
     return Account()
 
 
