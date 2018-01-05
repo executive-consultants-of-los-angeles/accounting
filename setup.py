@@ -23,7 +23,7 @@ setup(
     description=("Accounting software for accountants."),
     license="The Unlicense",
     keywords="accounting",
-    packages=['account', 'account.tests', 'transaction', 'transaction.tests'],
+    packages=['account', 'transaction'],
     long_description=read('readme.rst'),
     setup_requires=['pytest-runner'],
     tests_require=['pytest', 'nose'],
