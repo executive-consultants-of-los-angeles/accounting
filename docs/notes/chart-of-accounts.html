@@ -1,0 +1,106 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Chart of Accounts &#8212; accounting v0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'v0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Transaction Model" href="../modules/transaction.html" />
+    <link rel="prev" title="Account" href="account.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="chart-of-accounts">
+<h1>Chart of Accounts<a class="headerlink" href="#chart-of-accounts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
+<p>Theoretically at least this is meant to be a chart that displays in a meaninful way all of the accounts contained in a company’s books.</p>
+</div>
+<div class="section" id="approach">
+<h2>Approach<a class="headerlink" href="#approach" title="Permalink to this headline">¶</a></h2>
+<p>While that sounds simple, the author has yet to see software that could accomplish this apparently fundamental to accounting task.  Indeed, to my knowledge most accountants (at least in part due to this)  keep at least two sets of books: one in Excel and one in whatever accounting software their employer is using.  The implication here is that so far the best accounting software yet produced is Excel.  Excel does not produce meaningful charts of accounts without more effort than the author is willing to put in.  So, the aim here is to create something that will by default allow easy examination of a company’s chart of accounts and the relationships contained therein.</p>
+<p>As for the rest of the accounting software currently extant, at least as far as the author has seen, the closest anything comes to what would properly be called a chart is a list of names and numbers that may or may not also provide links to the data contained inside the accounts described.</p>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>So that’s a lofty goal: how the hell do we get there?  The first thing, I’d say, is to write some tests that describe what a chart of accounts looks like to a computing machine, then maybe see if we can get the software to pass those tests.</p>
+<p>Once we’re realtively certain of our ability to produce data that can be understood and maniuplated by the machines we’ll want to write some tests (perhaps with Selenium?) of a functional nature so that we can be sure of our ability to make the machine-readable data meaningful to humans as well. This is the second layer of the interface, as well as the second layer of the field of accounting, at least as it is being defined in the extremely limited scope of this software.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="account.html" title="previous chapter">Account</a></li>
+      <li>Next: <a href="../modules/transaction.html" title="next chapter">Transaction Model</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, ECLA.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/notes/chart-of-accounts.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
