@@ -6,6 +6,7 @@ class TestAccount(object):
     """Test class for account module."""
 
     account = Account
+    kinds = ['asset', 'liability', 'equity', 'revenue', 'expense']
 
     def test_account_object(self, account):
         """Test account fixture object."""
@@ -23,17 +24,13 @@ class TestAccount(object):
 
     def test_account_type(self, accounts):
         """Test account types."""
-        kinds = ['asset', 'liability', 'equity', 'revenue', 'expense']
         for account in accounts:
-            print(account)
-            account.kind = account.get('kind')
-            kind = account.account_kind()
+            account_obj = self.account()
+            kind = account_obj.account_kind()
+            account_obj.kind = account.get('kind')
 
             assert isinstance(kind, int)
-            assert kinds[kind] in kinds
-            assert isinstance(account.kind, int)
-            assert kinds[account.kind] in kinds
-            assert isinstance(account, self.account)
+            assert self.kinds[kind] in self.kinds
 
     def test_account_number(self, accounts):
         """The account number should be integer."""
