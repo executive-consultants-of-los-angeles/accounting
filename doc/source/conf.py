@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
+"""Configuration for Sphinx."""
 # -*- coding: utf-8 -*-
+# pylint: disable-msg=C0103,W0622
 #
 # accounting documentation build configuration file, created by
 # sphinx-quickstart on Sat Dec  2 22:17:57 2017.
@@ -20,6 +22,10 @@
 # import os
 import sys
 sys.path.insert(0, '/srv/accounting')
+sys.path.insert(0, '/srv/accounting/account')
+sys.path.insert(0, '/srv/accounting/account/tests')
+sys.path.insert(0, '/srv/accounting/chart')
+sys.path.insert(0, '/srv/accounting/chart/tests')
 sys.path.insert(0, '/srv/accounting/transaction')
 sys.path.insert(0, '/srv/accounting/transaction/tests')
 
@@ -178,7 +184,6 @@ texinfo_documents = [
 ]
 
 
-
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
@@ -198,7 +203,6 @@ epub_copyright = copyright
 
 # A list of files that should not be packed into the epub file.
 epub_exclude_files = ['search.html']
-
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
