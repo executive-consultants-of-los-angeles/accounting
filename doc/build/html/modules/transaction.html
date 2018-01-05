@@ -42,6 +42,128 @@
             
   <div class="section" id="transaction-model">
 <h1>Transaction Model<a class="headerlink" href="#transaction-model" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="transaction.transaction.Transaction">
+<em class="property">class </em><code class="descclassname">transaction.transaction.</code><code class="descname">Transaction</code><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class for modeling accounting transactions.</p>
+<dl class="class">
+<dt id="transaction.transaction.Transaction.date">
+<em class="property">class </em><code class="descname">date</code><a class="headerlink" href="#transaction.transaction.Transaction.date" title="Permalink to this definition">¶</a></dt>
+<dd><p>date(year, month, day) –&gt; date object</p>
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.ctime">
+<code class="descname">ctime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.ctime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return ctime() style string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.fromordinal">
+<code class="descname">fromordinal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.fromordinal" title="Permalink to this definition">¶</a></dt>
+<dd><p>int -&gt; date corresponding to a proleptic Gregorian ordinal.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.fromtimestamp">
+<code class="descname">fromtimestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.fromtimestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp -&gt; local date from a POSIX timestamp (like time.time()).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.isocalendar">
+<code class="descname">isocalendar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.isocalendar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a 3-tuple containing ISO year, week number, and weekday.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.isoformat">
+<code class="descname">isoformat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.isoformat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return string in ISO 8601 format, YYYY-MM-DD.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.isoweekday">
+<code class="descname">isoweekday</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.isoweekday" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the day of the week represented by the date.
+Monday == 1 … Sunday == 7</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.replace">
+<code class="descname">replace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return date with new specified fields.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.strftime">
+<code class="descname">strftime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.strftime" title="Permalink to this definition">¶</a></dt>
+<dd><p>format -&gt; strftime() style string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.timetuple">
+<code class="descname">timetuple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.timetuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return time tuple, compatible with time.localtime().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.today">
+<code class="descname">today</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.today" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current date or datetime:  same as self.__class__.fromtimestamp(time.time()).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.toordinal">
+<code class="descname">toordinal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.toordinal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return proleptic Gregorian ordinal.  January 1 of year 1 is day 1.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.date.weekday">
+<code class="descname">weekday</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.weekday" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the day of the week represented by the date.
+Monday == 0 … Sunday == 6</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.transaction_amount">
+<code class="descname">transaction_amount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_amount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_amount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return amount for transaction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.transaction_date">
+<code class="descname">transaction_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_date"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return date of transaction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.transaction_description">
+<code class="descname">transaction_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the description.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.transaction_left_account">
+<code class="descname">transaction_left_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_left_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_left_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the left (credit) account.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.transaction_right_account">
+<code class="descname">transaction_right_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_right_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_right_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the right (debit) account.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transaction.transaction.Transaction.transaction_tid">
+<code class="descname">transaction_tid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_tid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_tid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tid.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
