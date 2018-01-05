@@ -26,6 +26,8 @@ setup(
     packages=['account', 'transaction'],
     long_description=read('readme.rst'),
     setup_requires=['pytest-runner'],
+    requires=['pyyaml'],
+    provides=['chart', 'account', 'transaction'],
     tests_require=['pytest', 'nose'],
     classifiers=[
         "Development Status :: 3 - Alpha",
