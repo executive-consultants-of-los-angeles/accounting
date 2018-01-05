@@ -1,14 +1,18 @@
 """Test cases for the transaction class."""
 import datetime
+
 from transaction.transaction import Transaction
 
 
 class TestTransaction(object):
     """Transaction test cases."""
+
+    transaction = Transaction
+
     def test_transaction_amount(self, transactions):
         """Test the amount is a float."""
         for item in transactions:
-            transaction = Transaction()
+            transaction = self.transaction()
             transaction.amount = item.get('amount')
             amount = transaction.transaction_amount()
 
@@ -18,7 +22,7 @@ class TestTransaction(object):
     def test_transaction_left_account(self, transactions, accounts):
         """Test that the left account exists."""
         for item in transactions:
-            transaction = Transaction()
+            transaction = self.transaction()
             transaction.left_account = item.get('left_account')
             left_account = transaction.transaction_left_account()
 
@@ -32,7 +36,7 @@ class TestTransaction(object):
     def test_transaction_right_account(self, transactions, accounts):
         """Test the right account exists."""
         for item in transactions:
-            transaction = Transaction()
+            transaction = self.transaction()
             transaction.right_account = item.get('right_account')
             right_account = transaction.transaction_right_account()
 
@@ -46,7 +50,7 @@ class TestTransaction(object):
     def test_transaction_date(self, transactions):
         """Test that the date is correctly formatted."""
         for item in transactions:
-            transaction = Transaction()
+            transaction = self.transaction()
             transaction.date = item.get('date')
             t_date = transaction.transaction_date()
 
@@ -56,7 +60,7 @@ class TestTransaction(object):
     def test_transaction_description(self, transactions):
         """Test the description of the transaction."""
         for item in transactions:
-            transaction = Transaction()
+            transaction = self.transaction()
             transaction.description = item.get('description')
             description = transaction.transaction_description()
 
@@ -67,7 +71,7 @@ class TestTransaction(object):
     def test_transaction_tid(self, transactions):
         """Test that a tid is returned."""
         for item in transactions:
-            transaction = Transaction()
+            transaction = self.transaction()
             transaction.tid = item.get('tid')
             tid = transaction.transaction_tid()
 

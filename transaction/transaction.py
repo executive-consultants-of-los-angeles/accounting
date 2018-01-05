@@ -4,6 +4,7 @@ import datetime
 
 class Transaction(object):
     """A class for modeling accounting transactions."""
+
     amount = float()
     left_account = str()
     right_account = str()
