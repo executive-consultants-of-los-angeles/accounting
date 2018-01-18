@@ -10,7 +10,9 @@ cache:
   pip: 'yes'
   yarn: 'yes'
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 ./cc-test-reporter
+  - "wget \
+    https://codeclimate.com/downloads/test-reporter/\
+    test-reporter-latest-linux-amd64 -O ./cc-test-reporter"
   - chmod +x ./cc-test-reporter
   - "./cc-test-reporter before-build"
   - sudo apt-get -y update
