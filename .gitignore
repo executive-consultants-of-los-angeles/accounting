@@ -2,6 +2,7 @@ accounting.egg-info/
 .coverage
 *.pyc
 coverage.xml
+py/
 build/
 .eggs/
 *.swp
