@@ -3,11 +3,12 @@ import os
 import yaml
 import pytest
 
-from chart.chart import Chart 
+from chart.chart import Chart
 
 
 @pytest.fixture(scope='session')
 def chart():
+    """Return a chart object."""
     return Chart()
 
 
@@ -20,4 +21,4 @@ def charts():
     chart_yml = yml_file.read()
     yml_file.close()
 
-    return yaml.load(chart_yml)
+    return yaml.safe_load(chart_yml)
