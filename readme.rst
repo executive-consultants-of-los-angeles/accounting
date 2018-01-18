@@ -1,6 +1,10 @@
 accounting
 ----------
 
+.. image:: https://api.codacy.com/project/badge/Grade/b79ab899eb2a468ea4ef0ee5260ac049
+   :alt: Codacy Badge
+   :target: https://www.codacy.com/app/gahancorpcfo/accounting?utm_source=github.com&utm_medium=referral&utm_content=gahan-corporation/accounting&utm_campaign=badger
+
 .. note:: Added test coverage too.
 
 .. image:: https://travis-ci.org/executive-consultants-of-los-angeles/accounting.svg?branch=master
