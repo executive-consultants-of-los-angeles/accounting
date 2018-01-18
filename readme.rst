@@ -5,10 +5,11 @@ accounting
    :alt: Codacy Badge
    :target: https://www.codacy.com/app/gahancorpcfo/accounting?utm_source=github.com&utm_medium=referral&utm_content=gahan-corporation/accounting&utm_campaign=badger
 
-.. note:: Added test coverage too.
+.. image:: https://api.codacy.com/project/badge/Coverage/521afc96b6d9435ca7ef1be0bfae502e    
+   :target: https://www.codacy.com/app/gahancorpcfo/accounting?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gahan-corporation/accounting&amp;utm_campaign=Badge_Coverage
 
 .. image:: https://travis-ci.org/executive-consultants-of-los-angeles/accounting.svg?branch=master
-       :target: https://travis-ci.org/executive-consultants-of-los-angeles/accounting
+   :target: https://travis-ci.org/executive-consultants-of-los-angeles/accounting
 
 .. image:: https://coveralls.io/repos/github/executive-consultants-of-los-angeles/accounting/badge.svg?branch=master
    :target: https://coveralls.io/github/executive-consultants-of-los-angeles/accounting?branch=master
