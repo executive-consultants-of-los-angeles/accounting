@@ -10,7 +10,8 @@ class TestAccount(object):
 
     def test_account_object(self, account):
         """Test account fixture object."""
-        assert isinstance(account, self.account)
+        if not isinstance(account, self.account):
+            raise AssertionError()
 
     def test_account_name(self, accounts):
         """Make sure an account name contains only characters."""
