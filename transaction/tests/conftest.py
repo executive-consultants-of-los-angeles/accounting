@@ -8,18 +8,20 @@ from transaction.transaction import Transaction
 
 @pytest.fixture(scope='session')
 def transaction():
+    """Return transaction object."""
     return Transaction()
 
 
 @pytest.fixture(scope='session')
 def transactions():
+    """Return transactions from file."""
     path = os.environ.get('YML_PATH')
 
     yml_file = open('{}/transaction.yml'.format(path), 'r')
     transactions_yml = yml_file.read()
     yml_file.close()
 
-    return yaml.load(transactions_yml)
+    return yaml.safe_load(transactions_yml)
 
 
 @pytest.fixture(scope='session')
@@ -31,4 +33,4 @@ def accounts():
     accounts_yml = yml_file.read()
     yml_file.close()
 
-    return yaml.load(accounts_yml)
+    return yaml.safe_load(accounts_yml)
