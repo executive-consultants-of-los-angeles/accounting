@@ -9,7 +9,8 @@ class TestChart(object):
 
     def test_chart_object(self, chart):
         """Test chart fixture object."""
-        assert isinstance(chart, self.chart)
+        if not isinstance(chart, self.chart):
+            raise AssertionError()
 
     def test_chart_name(self, chart):
         """Test the chart's name."""
@@ -17,8 +18,10 @@ class TestChart(object):
         chart.name = 'Test Chart'
         chart_name = chart.name
 
-        assert isinstance(chart.name, str)
-        assert isinstance(chart_name, str)
+        if not isinstance(chart.name, str):
+            raise AssertionError()
+        if not isinstance(chart_name, str):
+            raise AssertionError()
 
     def test_chart_related_accounts(self, chart):
         """Test chart assignment of accounts to a side of the equation."""
@@ -26,5 +29,7 @@ class TestChart(object):
         chart.accounts = []
         chart_accounts = chart.accounts
 
-        assert isinstance(chart.accounts, list)
-        assert isinstance(chart_accounts, list)
+        if not isinstance(chart.accounts, list):
+            raise AssertionError()
+        if not isinstance(chart_accounts, list):
+            raise AssertionError()
