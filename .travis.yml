@@ -5,12 +5,15 @@ env:
   global:
     - CC_TEST_REPORTER_ID=82428da430f003a16e79bb4da19d1f4b045712dee9c8dff967462c6580a1b567
     - YML_PATH=yml/
+    - CODACY_PROJECT_TOKEN=c0d904f90e314742be3c75197bf7d86c
 cache:
   pip: 'yes'
   yarn: 'yes'
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-    > ./cc-test-reporter
+  - >
+      curl -L
+      https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+      ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - "./cc-test-reporter before-build"
   - sudo apt-get -y update
@@ -26,9 +29,10 @@ script:
   - .py/bin/coverage xml
   - .py/bin/pytest
 after_script:
-  - "./cc-test-reporter after-build -t coverage.py --exit-code $TRAVIS_TEST_RESULT"
-  - "./cc-test-reporter after-build -t coverage.py --exit-code $TRAVIS_TEST_RESULT modules/humanresources/coverage.xml"
+  - >
+      ./cc-test-reporter after-build -t coverage.py
+      --exit-code $TRAVIS_TEST_RESULT"
+  - python-codacy-coverage
 on_success: never
 on_failure: never
 ...
-# vim: ft=ansible:
