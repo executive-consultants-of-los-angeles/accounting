@@ -25,10 +25,10 @@ setup(
     keywords="accounting",
     packages=['account', 'transaction'],
     long_description=read('readme.rst'),
+    install_requires=['pyyaml'],
     setup_requires=['pytest-runner'],
-    requires=['pyyaml'],
     provides=['chart', 'account', 'transaction'],
-    tests_require=['pytest', 'nose'],
+    tests_require=['pytest', 'coverage'],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",

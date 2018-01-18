@@ -1,4 +1,6 @@
 accounting.egg-info/
+coverage/
+py/
 .coverage
 *.pyc
 coverage.xml
