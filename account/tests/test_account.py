@@ -19,8 +19,10 @@ class TestAccount(object):
             account.name = item.get('name')
             account_name = account.account_name()
 
-            assert isinstance(account.name, str)
-            assert isinstance(account_name, str)
+            if not isinstance(account.name, str):
+                raise AssertionError()
+            if not isinstance(account_name, str):
+                raise AssertionError()
 
     def test_account_type(self, accounts):
         """Test account types."""
@@ -29,8 +31,10 @@ class TestAccount(object):
             kind = account_obj.account_kind()
             account_obj.kind = account.get('kind')
 
-            assert isinstance(kind, int)
-            assert self.kinds[kind] in self.kinds
+            if not isinstance(kind, int):
+                raise AssertionError()
+            if not self.kinds[kind] in self.kinds:
+                raise AssertionError()
 
     def test_account_number(self, accounts):
         """The account number should be integer."""
@@ -39,5 +43,7 @@ class TestAccount(object):
             account.number = item.get('number')
             number = account.account_number()
 
-            assert isinstance(number, int)
-            assert isinstance(account.number, int)
+            if not isinstance(number, int):
+                raise AssertionError()
+            if not isinstance(account.number, int):
+                raise AssertionError()
