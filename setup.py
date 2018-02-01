@@ -24,7 +24,6 @@ setup(
     license="The Unlicense",
     keywords="accounting",
     packages=[
-        'newhart',
         'newhart.account',
         'newhart.chart',
         'newhart.transaction',
@@ -38,7 +37,6 @@ setup(
         'pytest-runner'
     ],
     provides=[
-        'newhart',
         'newhart.chart',
         'newhart.account',
         'newhart.transaction'
