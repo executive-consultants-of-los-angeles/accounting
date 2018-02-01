@@ -20,14 +20,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 # import os
-import sys
-sys.path.insert(0, '/srv/accounting')
-sys.path.insert(0, '/srv/accounting/account')
-sys.path.insert(0, '/srv/accounting/account/tests')
-sys.path.insert(0, '/srv/accounting/chart')
-sys.path.insert(0, '/srv/accounting/chart/tests')
-sys.path.insert(0, '/srv/accounting/transaction')
-sys.path.insert(0, '/srv/accounting/transaction/tests')
+# import sys
 
 
 # -- General configuration ------------------------------------------------
@@ -41,15 +34,21 @@ sys.path.insert(0, '/srv/accounting/transaction/tests')
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.autosectionlabel',
     'sphinx.ext.autosummary',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
+    'sphinx.ext.doctest',
+    'sphinx.ext.githubpages',
+    'sphinx.ext.graphviz',
     'sphinx.ext.ifconfig',
+    'sphinx.ext.inheritance_diagram',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.todo',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages']
+]
+
+autosummary_generate = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

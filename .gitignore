@@ -1,4 +1,6 @@
 accounting.egg-info/
+.*cache*
+*egg*
 coverage/
 py/
 .coverage
