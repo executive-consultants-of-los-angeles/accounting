@@ -22,8 +22,9 @@ setup(
     author_email="cfo@ecla.solutiosn",
     description=("Accounting software for accountants."),
     license="The Unlicense",
-    keywords="accounting",
+    keywords="newhart",
     packages=[
+        'newhart.newhart',
         'newhart.account',
         'newhart.chart',
         'newhart.transaction',
@@ -37,6 +38,7 @@ setup(
         'pytest-runner'
     ],
     provides=[
+        'newhart.newhart',
         'newhart.chart',
         'newhart.account',
         'newhart.transaction'
