@@ -16,6 +16,7 @@ Accounting Software for Accountants
    modules/account
    modules/chart
    modules/transaction
+   api/modules
 
 .. autosummary::
    :toctree: transaction
