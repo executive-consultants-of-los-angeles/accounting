@@ -3,7 +3,7 @@ import os
 import yaml
 import pytest
 
-from transaction.transaction import Transaction
+from newhart.transaction.models import Transaction
 
 
 @pytest.fixture(scope='session')
