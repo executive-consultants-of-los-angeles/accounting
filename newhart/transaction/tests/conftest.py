@@ -2,8 +2,11 @@
 import os
 import yaml
 import pytest
+import django
 
-from newhart.transaction.models import Transaction
+from transaction.models import Transaction
+
+django.setup()
 
 
 @pytest.fixture(scope='session')
@@ -15,7 +18,7 @@ def transaction():
 @pytest.fixture(scope='session')
 def transactions():
     """Return transactions from file."""
-    path = os.environ.get('YML_PATH')
+    path = os.path.join(os.path.dirname(__file__), "../yml")
 
     yml_file = open('{}/transaction.yml'.format(path), 'r')
     transactions_yml = yml_file.read()
@@ -27,7 +30,7 @@ def transactions():
 @pytest.fixture(scope='session')
 def accounts():
     """Define accounts fixture."""
-    path = os.environ.get('YML_PATH')
+    path = os.path.join(os.path.dirname(__file__), "../../../yml")
 
     yml_file = open('{}/account.yml'.format(path), 'r')
     accounts_yml = yml_file.read()

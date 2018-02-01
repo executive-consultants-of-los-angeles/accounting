@@ -30,7 +30,7 @@ script:
 after_script:
   - >
       ./cc-test-reporter after-build -t coverage.py
-      --exit-code $TRAVIS_TEST_RESULT"
+      --exit-code $TRAVIS_TEST_RESULT
   - python-codacy-coverage
 on_success: never
 on_failure: never

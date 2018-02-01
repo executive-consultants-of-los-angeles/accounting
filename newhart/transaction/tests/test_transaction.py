@@ -1,7 +1,7 @@
 """Test cases for the transaction class."""
 import datetime
 
-from transaction.transaction import Transaction
+from transaction.models import Transaction
 
 
 class TestTransaction(object):
