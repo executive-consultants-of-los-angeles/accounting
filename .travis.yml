@@ -14,6 +14,8 @@ script:
   - docker exec --user postgres postgres createdb newhart
   - docker run -d --name newhart -h newhart --rm newhart
   - docker network connect newhart newhart || true
+  - docker exec newhart /srv/newhart/newhart/manage.py makemigrations
+  - docker exec newhart /srv/newhart/newhart/manage.py migrate
   - docker exec newhart python setup.py build
   - docker exec newhart python setup.py test
   - docker exec newhart python setup.py install

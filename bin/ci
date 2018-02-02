@@ -6,11 +6,13 @@ docker network connect newhart postgres || true
 
 
 # Sleep
-docker build -t newhart bin
+docker build -t newhart bin --no-cache
 docker exec --user postgres postgres createuser -s newhart 
 docker exec --user postgres postgres createdb newhart 
 docker run -d --name newhart -h newhart --rm newhart
 docker network connect newhart newhart || true
+docker exec newhart /srv/newhart/newhart/manage.py makemigrations
+docker exec newhart /srv/newhart/newhart/manage.py migrate 
 docker exec newhart python setup.py build
 docker exec newhart python setup.py test
 docker exec newhart python setup.py install
