@@ -6,6 +6,15 @@ class TestTransaction(object):
 
     transaction = None
 
+    def test_save_transaction(self, transactions, transaction):
+        """Save transactions to the db."""
+        self.transaction = transaction
+        for item in transactions:
+            transaction.amount = item.get('amount')
+            transaction.date = item.get('date')
+            transaction.description = item.get('description')
+            transaction.save()
+
     def test_transaction_amount(self, transactions, transaction):
         """Test the amount is a float."""
         self.transaction = transaction
