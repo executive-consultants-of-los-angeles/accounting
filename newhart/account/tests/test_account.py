@@ -17,6 +17,42 @@ class TestAccount(object):
             )
             account_ins.save()
 
+            if not account_ins.id:
+                raise AssertionError("Account failed to save.")
+
+    def test_read_accounts(self, account, accounts):
+        """Test that we can read accounts from the db."""
+        self.account = accounts
+        account_objects = account.objects.all()
+        if not account_objects:
+            raise AssertionError("Could not read accounts.")
+
+    def test_update_account(self, account, accounts):
+        """Test update acccount."""
+        self.account = accounts
+
+        up_account = account.objects.get(name=accounts[0].get('name'))
+        up_account.name = "Not the same."
+        up_account.save()
+
+        if up_account.name != "Not the same.":
+            raise AssertionError("Failed to update account.")
+
+    def test_delete_account(self, account, accounts):
+        """Test delete account."""
+        self.account = accounts
+
+        del_account = account.objects.get(name=accounts[0].get('name'))
+
+        if del_account.delete() != (1, {'account.Account': 1}):
+            raise AssertionError("Incorrect return on delete.")
+
+        del_account = account.objects.filter(
+            name=accounts[0].get('name'))
+
+        if del_account:
+            raise AssertionError("Did not delete.")
+
     def test_account_name(self, accounts, account):
         """Make sure an account name contains only characters."""
         for item in accounts:

@@ -3,8 +3,11 @@ import os
 import yaml
 import pytest
 
+import newhart.loadapps
+
 from account.models import Account
 
+newhart.loadapps.main()
 
 @pytest.fixture(scope='session')
 def account():
@@ -12,7 +15,7 @@ def account():
     return Account
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def accounts():
     """Define accounts fixture."""
     path = os.path.join(os.path.dirname(__file__), "../yml")
