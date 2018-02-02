@@ -16,6 +16,7 @@ class TestTransaction(object):
             transaction.save()
 
     def test_get_transaction(self, transaction):
+        """Test fetching transactions from the db."""
         self.transaction = transaction.objects.all()
         if not self.transaction:
             raise AssertionError()
