@@ -7,8 +7,9 @@ cache:
 before_script:
   - sudo apt-get -y update; sudo apt-get -y install docker
   - docker network create newhart || true
-  - docker run -d --name postgres -h postgres --network newhart \
-    --rm postgres:alpine
+  - >
+      docker run -d --name postgres -h postgres --network newhart
+      --rm postgres:alpine
 script:
   - docker build -t newhart bin
   - docker run -d --name newhart -h newhart --newtwork newhart \
