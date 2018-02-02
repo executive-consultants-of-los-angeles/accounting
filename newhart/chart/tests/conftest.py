@@ -12,10 +12,10 @@ def chart():
     return Chart()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def charts():
     """Define accounts fixture."""
-    path = os.environ.get('YML_PATH')
+    path = os.path.join(os.path.dirname(__file__), "../yml")
 
     yml_file = open('{}/chart.yml'.format(path), 'r')
     chart_yml = yml_file.read()
