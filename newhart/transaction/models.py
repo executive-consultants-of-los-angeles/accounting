@@ -1,25 +1,15 @@
 """Module for Transaction models."""
-import datetime
 from django.db import models
 
 # Create your models here.
 
 class Transaction(models.Model):
     """Transaction model class."""
-    amount = models.FloatField()
+    amount = models.FloatField("Amount")
     left_account = str()
     right_account = str()
-    date = models.DateField()
-    description = models.TextField()
-
-    def __init__(self):
-        """Instantiate a Transaction object."""
-        self.amount = float()
-        self.left_account = str()
-        self.right_account = str()
-        self.date = datetime.date
-        self.description = str()
-        super().__init__()
+    date = models.DateField("Date")
+    description = models.TextField("Description")
 
     def transaction_amount(self):
         """Return amount for transaction."""

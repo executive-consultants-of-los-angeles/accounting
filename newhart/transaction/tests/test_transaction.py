@@ -1,8 +1,10 @@
 """Test cases for the transaction class."""
 import datetime
-import pytest
 
-@pytest.mark.django_db(transaction=True)
+
+from transaction.models import Transaction
+
+
 class TestTransaction(object):
     """Transaction test cases."""
 
@@ -12,15 +14,22 @@ class TestTransaction(object):
         """Save transactions to the db."""
         self.transaction = transaction()
         for item in transactions:
-            self.transaction.amount = item.get('amount')
-            self.transaction.date = item.get('date')
-            self.transaction.description = item.get('description')
-            self.transaction.save()
-
-            print(self.transaction.id)
+            ltr = transaction.objects.create(amount=item.get('amount'))
+            print(ltr)
+            local_transaction = transaction()
+            print(local_transaction)
+            local_transaction.amount = item.get('amount')
+            print(local_transaction)
+            local_transaction.date = item.get('date')
+            print(local_transaction)
+            local_transaction.description = item.get('description')
+            print(local_transaction)
+            local_transaction.save()
 
             if not self.transaction.id:
                 raise AssertionError("Object was not saved correctly.")
+
+            local_transaction = None
 
     def test_get_transaction(self, transaction):
         """Test fetching transactions from the db."""
