@@ -1,4 +1,5 @@
 FROM alpine:3.7
+MAINTAINER xander@gahancorporation.com
 RUN apk update
 RUN apk add python3; ln -sf /usr/bin/python3 /usr/bin/python
 RUN apk add python3-dev
