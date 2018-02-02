@@ -20,7 +20,7 @@ before_script:
   - sudo pip install virtualenv
   - virtualenv -p /usr/bin/python3 .py
   - source .py/bin/activate
-  - env
+  - pip install coverage django django-extensions pytest pytest-runner pytest-django
 script:
   - python setup.py build
   - python setup.py test
