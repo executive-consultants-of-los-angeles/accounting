@@ -21,7 +21,7 @@ before_script:
   - virtualenv -p /usr/bin/python3 .py
   - .py/bin/pip install -e .
 script:
-  - .py/bin/pytest -s 
+  - .py/bin/python setup.py test
   - .py/bin/coverage run setup.py test
   - .py/bin/coverage xml
 after_script:
