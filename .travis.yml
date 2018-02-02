@@ -5,10 +5,8 @@ services: docker
 cache:
   pip: 'yes'
 before_script:
-  - sudo apt-get -y update; sudo apt-get -y install docker.io
   - docker network create newhart || true
-  - >
-      docker run -d --name postgres -h postgres postgres:alpine
+  - docker run -d --name postgres -h postgres postgres:alpine
   - docker network connect newhart postgres || true
 script:
   - docker build -t newhart bin
