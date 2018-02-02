@@ -21,11 +21,11 @@ before_script:
   - virtualenv -p /usr/bin/python3 .py
   - source .py/bin/activate
   - env
-  - .py/bin/pip install -e .
 script:
-  - .py/bin/python setup.py test
-  - .py/bin/coverage run setup.py test
-  - .py/bin/coverage xml
+  - python setup.py build
+  - python setup.py test
+  - python setup.py install
+  - pytest
 after_script:
   - >
       ./cc-test-reporter after-build -t coverage.py
