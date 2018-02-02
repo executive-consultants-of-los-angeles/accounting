@@ -21,6 +21,9 @@ before_script:
   - virtualenv -p /usr/bin/python3 .py
   - source .py/bin/activate
   - pip install -r .requirements
+  - docker network create newhart || true
+  - docker run -d --name postgres -h postgres --network newhart \
+    --rm postgres:alpine
 script:
   - python setup.py build
   - python setup.py test
