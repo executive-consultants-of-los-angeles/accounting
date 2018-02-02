@@ -10,7 +10,7 @@ from transaction.models import Transaction
 newhart.loadapps.main()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='module')
 def transaction():
     """Return transaction object."""
     return Transaction

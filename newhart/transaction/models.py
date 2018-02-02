@@ -11,7 +11,6 @@ class Transaction(models.Model):
     right_account = str()
     date = models.DateField()
     description = models.TextField()
-    tid = int()
 
     def __init__(self):
         """Instantiate a Transaction object."""
@@ -20,7 +19,6 @@ class Transaction(models.Model):
         self.right_account = str()
         self.date = datetime.date
         self.description = str()
-        self.tid = int()
         super().__init__()
 
     def transaction_amount(self):
@@ -42,7 +40,3 @@ class Transaction(models.Model):
     def transaction_description(self):
         """Return the description."""
         return self.description
-
-    def transaction_tid(self):
-        """Return the tid."""
-        return self.tid
