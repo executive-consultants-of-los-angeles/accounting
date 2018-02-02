@@ -1,0 +1,18 @@
+#!/bin/bash  
+
+docker network create newhart || true
+docker run -d --name postgres -h postgres postgres:alpine
+docker ps -a
+docker network connect newhart postgres || true
+docker build -t newhart bin
+docker run -d --name newhart -h newhart --rm newhart
+docker network connect newhart newhart || true
+docker exec newhart python setup.py build
+docker exec newhart python setup.py test
+docker exec newhart python setup.py install
+docker exec newhart pytest
+docker exec newhart coverage run --source='./newhart' setup.py test
+docker exec newhart coverage xml
+
+docker exec newhart python-codacy-coverage
+docker stop newhart
