@@ -2,9 +2,6 @@
 import datetime
 
 
-from transaction.models import Transaction
-
-
 class TestTransaction(object):
     """Transaction test cases."""
 
@@ -14,28 +11,43 @@ class TestTransaction(object):
         """Save transactions to the db."""
         self.transaction = transaction()
         for item in transactions:
-            ltr = transaction.objects.create(amount=item.get('amount'))
-            print(ltr)
-            local_transaction = transaction()
-            print(local_transaction)
-            local_transaction.amount = item.get('amount')
-            print(local_transaction)
-            local_transaction.date = item.get('date')
-            print(local_transaction)
-            local_transaction.description = item.get('description')
-            print(local_transaction)
-            local_transaction.save()
+            ltr = transaction.objects.create(
+                amount=item.get('amount'),
+                date=item.get('date'),
+                description=item.get('description')
+            )
+            ltr.save()
 
-            if not self.transaction.id:
+            if not ltr.id:
                 raise AssertionError("Object was not saved correctly.")
 
-            local_transaction = None
-
-    def test_get_transaction(self, transaction):
-        """Test fetching transactions from the db."""
+    def test_get_transactions(self, transactions, transaction):
+        """Get transaction from the db."""
         self.transaction = transaction.objects.all()
 
+        if not transactions:
+            raise AssertionError()
+
         if not self.transaction:
+            raise AssertionError()
+
+    def test_update_transaction(self, transactions, transaction):
+        """Update a transaction."""
+        self.transaction = transaction.objects.get(
+            amount=transactions[0].get('amount'))
+        self.transaction.amount = 149281.11
+        self.transaction.save()
+
+        if self.transaction.amount != 149281.11:
+            raise AssertionError()
+
+    def test_delete_transaction(self, transactiosn, transaction):
+        """Delete a transaction."""
+        self.transaction = transaction.objects.get(
+            amount=transactions[0].get('amount'))
+        self.transaction.delete
+
+        if self.transaction:
             raise AssertionError()
 
     def test_transaction_amount(self, transactions, transaction):

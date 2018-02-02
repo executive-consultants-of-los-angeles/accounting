@@ -16,7 +16,7 @@ def transaction():
     return Transaction
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def transactions():
     """Return transactions from file."""
     path = os.path.join(os.path.dirname(__file__), "../yml")
@@ -24,6 +24,14 @@ def transactions():
     yml_file = open('{}/transaction.yml'.format(path), 'r')
     transactions_yml = yml_file.read()
     yml_file.close()
+
+    for item in yaml.safe_load(transactions_yml):
+        ltr = Transaction(
+            amount=item.get('amount'),
+            date=item.get('date'),
+            description=item.get('description')
+        )
+        ltr.save()
 
     return yaml.safe_load(transactions_yml)
 
