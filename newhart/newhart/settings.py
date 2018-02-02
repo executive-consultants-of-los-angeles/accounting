@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'newhart',
+    'chart',
     'account',
     'transaction',
     'django.contrib.admin',

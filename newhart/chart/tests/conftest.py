@@ -9,7 +9,7 @@ from chart.models import Chart
 @pytest.fixture(scope='session')
 def chart():
     """Return a chart object."""
-    return Chart()
+    return Chart
 
 
 @pytest.fixture(scope='function')
