@@ -24,3 +24,9 @@ Future home to the best accouting software ever written.
 ........................................................
 
 http://www.accounting.com/resources/gaap/
+
+
+.. _boostrap: https://getbootstrap.com/docs/3.3/getting-started/#examples
+
+
+Here's the getting started guide for `bootstrap`_.
