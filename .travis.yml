@@ -5,7 +5,7 @@ cache:
   pip: 'yes'
   yarn: 'yes'
 before_script:
-  - sudo apt-get -y update; sudo apt-get -y install docker
+  - sudo apt-get -y update; sudo apt-get -y install docker.io
   - docker network create newhart || true
   - >
       docker run -d --name postgres -h postgres --network newhart
