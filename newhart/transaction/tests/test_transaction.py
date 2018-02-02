@@ -41,11 +41,11 @@ class TestTransaction(object):
         if self.transaction.amount != 149281.11:
             raise AssertionError()
 
-    def test_delete_transaction(self, transactiosn, transaction):
+    def test_delete_transaction(self, transactions, transaction):
         """Delete a transaction."""
         self.transaction = transaction.objects.get(
             amount=transactions[0].get('amount'))
-        self.transaction.delete
+        self.transaction.delete()
 
         if self.transaction:
             raise AssertionError()
