@@ -20,12 +20,14 @@ before_script:
   - sudo pip install virtualenv
   - virtualenv -p /usr/bin/python3 .py
   - source .py/bin/activate
-  - pip install -r .requirements 
+  - pip install -r .requirements
 script:
   - python setup.py build
   - python setup.py test
   - python setup.py install
   - pytest
+  - coverage run setup.py test
+  - coverage xml
 after_script:
   - >
       ./cc-test-reporter after-build -t coverage.py
