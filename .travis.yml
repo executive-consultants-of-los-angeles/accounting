@@ -7,7 +7,8 @@ cache:
 before_script:
   - docker network create newhart || true
   - docker run -d --name postgres -h postgres postgres:alpine
-  - docker ps -a
+  - docker exec --user postgres postgres createuser -s newhart
+  - docker exec --user postgres postgres createdb newhart
   - docker network connect newhart postgres || true
 script:
   - docker build -t newhart bin
