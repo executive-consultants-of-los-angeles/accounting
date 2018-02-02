@@ -10,8 +10,8 @@ before_script:
   - docker network connect newhart postgres || true
 script:
   - docker build -t newhart bin
-  - docker run -d --name newhart -h newhart --newtwork newhart \
-    --rm newhart
+  - docker run -d --name newhart -h newhart --rm newhart
+  - docker network connect newhart newhart
   - docker exec newhart python setup.py build
   - docker exec newhart python setup.py test
   - docker exec newhart python setup.py install
