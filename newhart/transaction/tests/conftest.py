@@ -39,7 +39,7 @@ def transactions():
 @pytest.fixture(scope='session')
 def accounts():
     """Define accounts fixture."""
-    path = os.path.join(os.path.dirname(__file__), "../../../yml")
+    path = os.path.join(os.path.dirname(__file__), "../../account/yml")
 
     yml_file = open('{}/account.yml'.format(path), 'r')
     accounts_yml = yml_file.read()

@@ -17,38 +17,28 @@ class TestAccount(object):
             )
             account_ins.save()
 
-    def test_account_name(self, accounts):
+    def test_account_name(self, accounts, account):
         """Make sure an account name contains only characters."""
         for item in accounts:
-            account = self.account()
-            account.name = item.get('name')
-            account_name = account.account_name()
+            self.account = account
+            account_ins = account()
+            account_ins.name = item.get('name')
+            account_name = account_ins.account_name()
 
-            if not isinstance(account.name, str):
+            if not isinstance(account_ins.name, str):
                 raise AssertionError()
             if not isinstance(account_name, str):
                 raise AssertionError()
 
-    def test_account_type(self, accounts):
-        """Test account types."""
-        for account in accounts:
-            account_obj = self.account()
-            kind = account_obj.account_kind()
-            account_obj.kind = account.get('kind')
-
-            if not isinstance(kind, int):
-                raise AssertionError()
-            if not self.kinds[kind] in self.kinds:
-                raise AssertionError()
-
-    def test_account_number(self, accounts):
+    def test_account_number(self, accounts, account):
         """The account number should be integer."""
         for item in accounts:
-            account = self.account()
-            account.number = item.get('number')
-            number = account.account_number()
+            self.account = account
+            account_ins = account()
+            account_ins.number = item.get('number')
+            number = account_ins.account_number()
 
             if not isinstance(number, int):
                 raise AssertionError()
-            if not isinstance(account.number, int):
+            if not isinstance(account_ins.number, int):
                 raise AssertionError()
