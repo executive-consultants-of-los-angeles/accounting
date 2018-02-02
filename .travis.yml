@@ -5,7 +5,6 @@ cache:
   pip: 'yes'
   yarn: 'yes'
 before_script:
-  - "./cc-test-reporter before-build"
   - docker network create newhart || true
   - docker run -d --name postgres -h postgres --network newhart \
     --rm postgres:alpine
