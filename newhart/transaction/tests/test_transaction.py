@@ -44,8 +44,13 @@ class TestTransaction(object):
     def test_delete_transaction(self, transactions, transaction):
         """Delete a transaction."""
         self.transaction = transaction.objects.get(
+            amount=transactions[0].get('amount')).delete()
+
+        if self.transaction != (1, {'transaction.Transaction': 1}):
+            raise AssertionError()
+
+        self.transaction = transaction.objects.filter(
             amount=transactions[0].get('amount'))
-        self.transaction.delete()
 
         if self.transaction:
             raise AssertionError()
