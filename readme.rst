@@ -29,4 +29,4 @@ http://www.accounting.com/resources/gaap/
 .. _boostrap: https://getbootstrap.com/docs/3.3/getting-started/#examples
 
 
-Here's the getting started guide for `bootstrap`_.
+Here's the getting started guide for bootstrap_.
