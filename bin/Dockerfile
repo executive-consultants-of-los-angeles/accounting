@@ -5,6 +5,8 @@ RUN apk add wget
 RUN wget https://bootstrap.pypa.io/get-pip.py; python get-pip.py; rm get-pip.py; ln -sf /usr/bin/pip3 /usr/bin/pip
 RUN apk add git
 RUN git clone https://github.com/gahan-corporation/newhart.git /srv/newhart
+WORKDIR /srv/newhart
+RUN git checkout v0.0.1
 ENV DJANGO_SETTINGS_MODULE newhart.settings
 RUN pip install -r /srv/newhart/.requirements
 EXPOSE 8000
