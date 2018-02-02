@@ -2,11 +2,12 @@
 import os
 import yaml
 import pytest
-import django
+
+import newhart.loadapps
 
 from transaction.models import Transaction
 
-django.setup()
+newhart.loadapps.main()
 
 
 @pytest.fixture(scope='session')
