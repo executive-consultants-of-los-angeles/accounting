@@ -6,7 +6,7 @@ from django.db import models
 
 class Transaction(models.Model):
     """Transaction model class."""
-    amount = float()
+    amount = models.FloatField()
     left_account = str()
     right_account = str()
     date = models.DateField()
