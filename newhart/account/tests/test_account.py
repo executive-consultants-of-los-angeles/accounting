@@ -1,17 +1,21 @@
 """Tests for the account module."""
-from account.account import Account
 
 
 class TestAccount(object):
     """Test class for account module."""
 
-    account = Account
+    account = None
     kinds = ['asset', 'liability', 'equity', 'revenue', 'expense']
 
-    def test_account_object(self, account):
-        """Test account fixture object."""
-        if not isinstance(account, self.account):
-            raise AssertionError()
+    def test_write_accounts(self, account, accounts):
+        """Test that we can save accounts by writing them."""
+        self.account = account
+        for item in accounts:
+            account_ins = account(
+                name=item.get('name'),
+                number=item.get('number')
+            )
+            account_ins.save()
 
     def test_account_name(self, accounts):
         """Make sure an account name contains only characters."""

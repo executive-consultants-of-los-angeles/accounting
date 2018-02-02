@@ -5,7 +5,7 @@ from django.db import models
 class Account(models.Model):
     """Class that defines account objects."""
 
-    name = models.CharField("Name", maxlength=255)
+    name = models.CharField("Name", max_length=255)
     kind = 0
     number = models.IntegerField("Number")
 
