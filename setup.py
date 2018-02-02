@@ -22,26 +22,22 @@ setup(
     author_email="cfo@ecla.solutiosn",
     description=("Accounting software for accountants."),
     license="The Unlicense",
-    keywords="newhart",
+    keywords="accounting",
+    package_dir={'': 'newhart'},
     packages=[
-        'newhart.newhart',
-        'newhart.account',
-        'newhart.chart',
-        'newhart.transaction',
+        'newhart',
+        'account',
+        'chart',
+        'transaction',
     ],
     long_description=read('readme.rst'),
     install_requires=[
         'django',
+        'django-extensions',
         'pyyaml',
     ],
     setup_requires=[
         'pytest-runner'
-    ],
-    provides=[
-        'newhart.newhart',
-        'newhart.chart',
-        'newhart.account',
-        'newhart.transaction'
     ],
     tests_require=[
         'pytest',
