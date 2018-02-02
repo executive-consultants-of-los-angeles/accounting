@@ -30,7 +30,7 @@ Future home to the best accouting software ever written.
 `Generally Accepted Accounting Principles`_
 
 
-.. _boostrap: https://getbootstrap.com/docs/3.3/getting-started/#examples
+.. _bootstrap: https://getbootstrap.com/docs/3.3/getting-started/#examples
 
 
 Here's the getting started guide for bootstrap_.
