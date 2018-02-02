@@ -10,7 +10,7 @@ class Transaction(models.Model):
     left_account = str()
     right_account = str()
     date = datetime.date
-    description = models.CharField()
+    description = models.TextField()
     tid = int()
 
     def __init__(self):
