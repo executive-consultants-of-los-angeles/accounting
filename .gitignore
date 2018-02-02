@@ -14,3 +14,4 @@ dist/
 __pycache__/
 .cache/
 node_modules/
+static/docs/
