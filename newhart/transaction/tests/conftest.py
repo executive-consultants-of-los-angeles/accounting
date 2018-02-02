@@ -13,7 +13,7 @@ newhart.loadapps.main()
 @pytest.fixture(scope='session')
 def transaction():
     """Return transaction object."""
-    return Transaction()
+    return Transaction
 
 
 @pytest.fixture(scope='session')

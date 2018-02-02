@@ -8,7 +8,7 @@ class TestTransaction(object):
 
     def test_save_transaction(self, transactions, transaction):
         """Save transactions to the db."""
-        self.transaction = transaction
+        self.transaction = transaction()
         for item in transactions:
             transaction.amount = item.get('amount')
             transaction.date = item.get('date')
@@ -23,7 +23,7 @@ class TestTransaction(object):
 
     def test_transaction_amount(self, transactions, transaction):
         """Test the amount is a float."""
-        self.transaction = transaction
+        self.transaction = transaction()
         for item in transactions:
             transaction.amount = item.get('amount')
             amount = transaction.transaction_amount()
@@ -35,7 +35,7 @@ class TestTransaction(object):
 
     def test_transaction_left_account(self, transactions, transaction, accounts):
         """Test that the left account exists."""
-        self.transaction = transaction
+        self.transaction = transaction()
         for item in transactions:
             transaction.left_account = item.get('left_account')
             left_account = transaction.transaction_left_account()
@@ -52,7 +52,7 @@ class TestTransaction(object):
 
     def test_transaction_right_account(self, transactions, transaction, accounts):
         """Test the right account exists."""
-        self.transaction = transaction
+        self.transaction = transaction()
         for item in transactions:
             transaction.right_account = item.get('right_account')
             right_account = transaction.transaction_right_account()
@@ -70,7 +70,7 @@ class TestTransaction(object):
 
     def test_transaction_date(self, transactions, transaction):
         """Test that the date is correctly formatted."""
-        self.transaction = transaction
+        self.transaction = transaction()
         for item in transactions:
             transaction.date = item.get('date')
             t_date = transaction.transaction_date()
@@ -82,7 +82,7 @@ class TestTransaction(object):
 
     def test_transaction_description(self, transactions, transaction):
         """Test the description of the transaction."""
-        self.transaction = transaction
+        self.transaction = transaction()
         for item in transactions:
             transaction.description = item.get('description')
             description = transaction.transaction_description()
@@ -96,7 +96,7 @@ class TestTransaction(object):
 
     def test_transaction_tid(self, transactions, transaction):
         """Test that a tid is returned."""
-        self.transaction = transaction
+        self.transaction = transaction()
         for item in transactions:
             transaction.tid = item.get('tid')
             tid = transaction.transaction_tid()
