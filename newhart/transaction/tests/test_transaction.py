@@ -15,6 +15,11 @@ class TestTransaction(object):
             transaction.description = item.get('description')
             transaction.save()
 
+    def test_get_transaction(self, transaction):
+        self.transaction = transaction.objects.all()
+        if not self.transaction:
+            raise AssertionError()
+
     def test_transaction_amount(self, transactions, transaction):
         """Test the amount is a float."""
         self.transaction = transaction
