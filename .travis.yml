@@ -16,11 +16,9 @@ script:
   - docker exec newhart python setup.py test
   - docker exec newhart python setup.py install
   - docker exec newhart pytest
-  - docker exec newhart /usr/bin/cc-test-reporter before-build
   - docker exec newhart coverage run --source='./newhart' setup.py test
   - docker exec newhart coverage xml
 after_script:
   - docker exec newhart python-codacy-coverage
-  - docker exec newhart cc-test-reporter after-build -t coverage.py
   - docker stop newhart
 ...

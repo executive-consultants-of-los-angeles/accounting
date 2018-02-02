@@ -9,7 +9,7 @@ class Transaction(models.Model):
     amount = float()
     left_account = str()
     right_account = str()
-    date = models.DateField() 
+    date = models.DateField()
     description = models.TextField()
     tid = int()
 
