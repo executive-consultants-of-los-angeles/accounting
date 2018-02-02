@@ -22,7 +22,7 @@ pathspec==0.5.5
 pluggy==0.6.0
 py==1.5.2
 Pygments==2.2.0
-pylint==2.0.0
+pylint
 pytest==3.4.0
 pytest-django==3.1.2
 pytest-runner==3.0
