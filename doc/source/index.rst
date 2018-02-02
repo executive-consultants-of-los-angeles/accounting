@@ -18,7 +18,7 @@ Accounting Software for Accountants
    modules/transaction
 
 .. autosummary::
-   :toctree: transaction
+   :toctree: newhart.transaction
 
 
 Indices and tables

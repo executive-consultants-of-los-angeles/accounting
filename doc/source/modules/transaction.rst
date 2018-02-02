@@ -1,7 +1,7 @@
 Transaction Model
 =================
 
-.. currentmodule:: transaction.transaction
+.. currentmodule:: newhart.transaction
 
-.. autoclass:: Transaction
-   :members:
+
+.. automodule:: newhart.transaction

@@ -1,37 +1,28 @@
 ---
 language: python
 sudo: required
-env:
-  global:
-    - CC_TEST_REPORTER_ID=82428da430f003a16e79bb4da19d1f4b045712dee9c8dff967462c6580a1b567
-    - YML_PATH=yml/
-    - CODACY_PROJECT_TOKEN=c0d904f90e314742be3c75197bf7d86c
+services: docker
 cache:
   pip: 'yes'
-  yarn: 'yes'
 before_script:
-  - "wget \
-    https://codeclimate.com/downloads/test-reporter/\
-    test-reporter-latest-linux-amd64 -O ./cc-test-reporter"
-  - chmod +x ./cc-test-reporter
-  - "./cc-test-reporter before-build"
-  - sudo apt-get -y update
-  - sudo apt-get -y install python3
-  - sudo pip install virtualenv
-  - virtualenv -p /usr/bin/python3 .py
-  - .py/bin/pip install pytest
-  - .py/bin/pip install pyyaml
-  - .py/bin/pip install coverage
-  - .py/bin/pip install -e .
+  - docker network create newhart || true
+  - docker run -d --name postgres -h postgres postgres:alpine
+  - docker network connect newhart postgres || true
 script:
-  - .py/bin/coverage run setup.py test
-  - .py/bin/coverage xml
-  - .py/bin/pytest
+  - docker build -t newhart bin
+  - docker exec --user postgres postgres createuser -s newhart
+  - docker exec --user postgres postgres createdb newhart
+  - docker run -d --name newhart -h newhart --rm newhart
+  - docker network connect newhart newhart || true
+  - docker exec newhart /srv/newhart/newhart/manage.py makemigrations
+  - docker exec newhart /srv/newhart/newhart/manage.py migrate
+  - docker exec newhart python setup.py build
+  - docker exec newhart python setup.py test
+  - docker exec newhart python setup.py install
+  - docker exec newhart pytest
+  - docker exec newhart coverage run --source='./newhart' setup.py test
+  - docker exec newhart coverage xml
 after_script:
-  - >
-      ./cc-test-reporter after-build -t coverage.py
-      --exit-code $TRAVIS_TEST_RESULT"
-  - python-codacy-coverage
-on_success: never
-on_failure: never
+  - docker exec newhart python-codacy-coverage
+  - docker stop newhart
 ...
