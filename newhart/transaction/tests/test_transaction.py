@@ -1,18 +1,15 @@
 """Test cases for the transaction class."""
 import datetime
 
-from transaction.models import Transaction
-
-
 class TestTransaction(object):
     """Transaction test cases."""
 
-    transaction = Transaction
+    transaction = None
 
-    def test_transaction_amount(self, transactions):
+    def test_transaction_amount(self, transactions, transaction):
         """Test the amount is a float."""
+        self.transaction = transaction
         for item in transactions:
-            transaction = self.transaction()
             transaction.amount = item.get('amount')
             amount = transaction.transaction_amount()
 
@@ -21,10 +18,10 @@ class TestTransaction(object):
             if not isinstance(transaction.amount, float):
                 raise AssertionError()
 
-    def test_transaction_left_account(self, transactions, accounts):
+    def test_transaction_left_account(self, transactions, transaction, accounts):
         """Test that the left account exists."""
+        self.transaction = transaction
         for item in transactions:
-            transaction = self.transaction()
             transaction.left_account = item.get('left_account')
             left_account = transaction.transaction_left_account()
             if not isinstance(left_account, str):
@@ -38,10 +35,10 @@ class TestTransaction(object):
             if not isinstance(item, dict):
                 raise AssertionError()
 
-    def test_transaction_right_account(self, transactions, accounts):
+    def test_transaction_right_account(self, transactions, transaction, accounts):
         """Test the right account exists."""
+        self.transaction = transaction
         for item in transactions:
-            transaction = self.transaction()
             transaction.right_account = item.get('right_account')
             right_account = transaction.transaction_right_account()
 
@@ -56,10 +53,10 @@ class TestTransaction(object):
             if not isinstance(item, dict):
                 raise AssertionError()
 
-    def test_transaction_date(self, transactions):
+    def test_transaction_date(self, transactions, transaction):
         """Test that the date is correctly formatted."""
+        self.transaction = transaction
         for item in transactions:
-            transaction = self.transaction()
             transaction.date = item.get('date')
             t_date = transaction.transaction_date()
 
@@ -68,10 +65,10 @@ class TestTransaction(object):
             if not isinstance(transaction.date, datetime.date):
                 raise AssertionError()
 
-    def test_transaction_description(self, transactions):
+    def test_transaction_description(self, transactions, transaction):
         """Test the description of the transaction."""
+        self.transaction = transaction
         for item in transactions:
-            transaction = self.transaction()
             transaction.description = item.get('description')
             description = transaction.transaction_description()
 
@@ -82,10 +79,10 @@ class TestTransaction(object):
             if description != transaction.description:
                 raise AssertionError()
 
-    def test_transaction_tid(self, transactions):
+    def test_transaction_tid(self, transactions, transaction):
         """Test that a tid is returned."""
+        self.transaction = transaction
         for item in transactions:
-            transaction = self.transaction()
             transaction.tid = item.get('tid')
             tid = transaction.transaction_tid()
 
