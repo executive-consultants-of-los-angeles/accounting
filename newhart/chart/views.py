@@ -10,11 +10,10 @@ from account.models import Account
 def index(request):
     """Render the index page."""
     context = {
-        'charts': {
-            Chart.objects.get(pk=1).name: {
-                'accounts': [account for account in Account.objects.all()]
-            }
-        }
+        'charts': [
+            {'name': Chart.objects.get(pk=1).name,
+             'accounts': [account for account in Account.objects.all()]}
+        ]
     }
 
     return render(request, 'chart/index.html', context)

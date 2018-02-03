@@ -6,9 +6,15 @@ from chart.models import Chart
 # Create your models here.
 class Account(models.Model):
     """Class that defines account objects."""
-
+    ACCOUNT_KIND = (
+        ('recievable', 'Recievable'),
+        ('payable', 'Payable'),
+        ('equity', 'Equity'),
+        ('revenue', 'Revenue'),
+        ('expense', 'Expense')
+    )
     name = models.CharField("Name", max_length=255)
-    kind = 0
+    kind = models.CharField('Type', max_length=30, choices=ACCOUNT_KIND)
     number = models.IntegerField("Number")
     chart = models.ForeignKey(Chart, on_delete=models.CASCADE)
 
