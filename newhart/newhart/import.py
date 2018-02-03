@@ -41,4 +41,10 @@ def main():
         )
         local_account.save()
 
+    transactions_yml = get_yml_file('transaction')
+
+    for item in yaml.safe_load(transactions_yml):
+        local_account = Account.objects.get(pk=item.get('account_id'))
+        print(local_account)
+
 main()

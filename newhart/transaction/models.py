@@ -1,13 +1,22 @@
 """Module for Transaction models."""
 from django.db import models
 
+from account.models import Account
 # Create your models here.
 
 class Transaction(models.Model):
     """Transaction model class."""
     amount = models.FloatField("Amount")
-    left_account = str()
-    right_account = str()
+    left_account = models.ForeignKey(
+        Account,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_left"
+    )
+    right_account = models.ForeignKey(
+        Account,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_right"
+    )
     date = models.DateField("Date")
     description = models.TextField("Description")
 
