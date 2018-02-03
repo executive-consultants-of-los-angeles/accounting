@@ -2,21 +2,21 @@
 - name: Accounts Receivable
   kind: 0
   number: 100000
-  chart: 1
+  chart_id: 1
 - name: Accounts Payable
   kind: 1
   number: 500000
-  chart: 1
+  chart_id: 1
 - name: Equity
   kind: 2
   number: 600000
-  chart: 1
+  chart_id: 1
 - name: Revenue
   kind: 3
   number: 200000
-  chart: 1
+  chart_id: 1
 - name: Expenses
   kind: 4
   number: 700000
-  chart: 1
+  chart_id: 1
 ...
