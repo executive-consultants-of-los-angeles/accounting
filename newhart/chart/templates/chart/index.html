@@ -68,17 +68,45 @@
         {% endfor %}
         <div class="col-xs-4">
           <h2>assets = </h2>
-          <h4>{{ charts.0.accounts.0 }}</h4>
-          <h4>{{ charts.0.accounts.3 }}</h4>
+          <h3>{{ charts.0.equation.assets }}</h3> 
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.0.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.0.balance }}<p>
+          </div>
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.3.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.3.balance }}</p>
+          </div>
         </div>
         <div class="col-xs-4">
           <h2>liabilities +</h2> 
-          <h4>{{ charts.0.accounts.1 }}</h4>
-          <h4>{{ charts.0.accounts.4 }}</h4>
+          <h3>{{ charts.0.equation.liabilities }}</h3>
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.1.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.1.balance }}</p>
+          </div>
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.4.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.4.balance }}</p>
+          </div>
         </div>
         <div class="col-xs-4">
           <h2>equity</h2>
-          <h4>{{ charts.0.accounts.2 }}</h4>
+          <h3>{{ charts.0.equation.equity }}</h3>
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.2.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.2.balance }}</p>
+          </div>
         </div>
       </div>
 

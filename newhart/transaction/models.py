@@ -1,4 +1,5 @@
 """Module for Transaction models."""
+# pylint: disable=no-member
 from django.db import models
 
 from account.models import Account
@@ -39,3 +40,17 @@ class Transaction(models.Model):
     def transaction_description(self):
         """Return the description."""
         return self.description
+
+    def calculate_balance(self, account):
+        """Calculate current balance for an account."""
+        balance = 0
+        transactions = Transaction.objects.filter(
+            left_account=account)
+
+        for transaction in transactions:
+            balance = balance + transaction.amount
+            print(transaction.amount)
+            print(transaction.left_account)
+        print(transactions)
+        print(self)
+        return balance

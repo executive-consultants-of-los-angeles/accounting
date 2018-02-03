@@ -6,6 +6,7 @@ import newhart.loadapps
 
 from account.models import Account
 from chart.models import Chart
+from transaction.models import Transaction
 
 newhart.loadapps.main()
 
@@ -44,7 +45,15 @@ def main():
     transactions_yml = get_yml_file('transaction')
 
     for item in yaml.safe_load(transactions_yml):
-        local_account = Account.objects.get(pk=item.get('account_id'))
-        print(local_account)
+        left_account = Account.objects.get(name=item.get('left_account'))
+        right_account = Account.objects.get(name=item.get('right_account'))
+        local_transaction = Transaction(
+            description=item.get('description'),
+            left_account=left_account,
+            right_account=right_account,
+            amount=item.get('amount'),
+            date=item.get('date')
+        )
+        local_transaction.save()
 
 main()

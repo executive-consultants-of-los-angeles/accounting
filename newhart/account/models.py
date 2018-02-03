@@ -17,6 +17,7 @@ class Account(models.Model):
     kind = models.CharField('Type', max_length=30, choices=ACCOUNT_KIND)
     number = models.IntegerField("Number")
     chart = models.ForeignKey(Chart, on_delete=models.CASCADE)
+    balance = models.FloatField("Balance", default=0)
 
     def account_name(self):
         """Return account name."""
