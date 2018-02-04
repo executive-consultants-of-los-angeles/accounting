@@ -1,7 +1,13 @@
 Transaction Model
 =================
 
-.. currentmodule:: newhart.transaction
+.. currentmodule:: transaction
+
+.. autosummary:: transaction
+   :toctree:
 
 
-.. automodule:: newhart.transaction
+.. automodule:: transaction
+
+
+.. autoclass:: transaction.models.Transaction

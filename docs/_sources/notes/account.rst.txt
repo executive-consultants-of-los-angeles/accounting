@@ -1,5 +1,9 @@
-Account
-=======
+========
+Accounts
+========
+
+Account Notes
+=============
 
 What is an account?
 -------------------
@@ -27,6 +31,14 @@ We can test the number for correct placement in the chart of accounts.
 We can test the type for its presence in a pre-defined list.
 
 We can test the transactions elsewhere.
+
+
+Account Modules
+===============
+
+.. toctree::
+
+   modules/account
 
 How do we test these qualities?
 -------------------------------

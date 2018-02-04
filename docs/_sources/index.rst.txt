@@ -13,13 +13,6 @@ Accounting Software for Accountants
    notes/transaction
    notes/account
    notes/chart-of-accounts
-   modules/account
-   modules/chart
-   modules/transaction
-
-.. autosummary::
-   :toctree: newhart.transaction
-
 
 Indices and tables
 ==================

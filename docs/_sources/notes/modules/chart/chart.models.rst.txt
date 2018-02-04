@@ -1,0 +1,27 @@
+.. _chart-module-models:
+
+chart\.models
+=============
+
+.. automodule:: chart.models
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Chart
+   
+   
+
+   
+   
+   
+
+   .. autoclass:: chart.models.Chart 
+      :members:

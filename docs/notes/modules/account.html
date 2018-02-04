@@ -1,0 +1,246 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>account &#8212; accounting v0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     'v0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chart of Accounts" href="../chart-of-accounts.html" />
+    <link rel="prev" title="Accounts" href="../account.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-account.views">
+<span id="account"></span><h1>account<a class="headerlink" href="#module-account.views" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-newhart.account.views"></span><dl class="function">
+<dt id="account.views.index">
+<code class="descclassname">account.views.</code><code class="descname">index</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/account/views.html#index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#account.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the index for the account app.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>request</strong> (<a class="reference external" href="http://django.readthedocs.io/en/latest/ref/request-response.html#django.http.HttpRequest" title="(in Django v2.1)"><code class="docutils literal"><span class="pre">django.http.HttpRequest</span></code></a>) – A request from Django.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://django.readthedocs.io/en/latest/ref/request-response.html#django.http.HttpResponse" title="(in Django v2.1)"><code class="docutils literal"><span class="pre">django.http.HttpResponse</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">AttributeError, KeyError</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<span class="target" id="module-account.models"></span><span class="target" id="module-newhart.account.models"></span><dl class="class">
+<dt id="account.models.Account">
+<em class="property">class </em><code class="descclassname">account.models.</code><code class="descname">Account</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/account/models.html#Account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#account.models.Account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that defines account objects.</p>
+<dl class="attribute">
+<dt id="account.models.Account.name">
+<code class="descname">name</code><a class="headerlink" href="#account.models.Account.name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The name of the Chart of Accounts being manipulated.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://django.readthedocs.io/en/latest/ref/models/fields.html#django.db.models.CharField" title="(in Django v2.1)"><code class="docutils literal"><span class="pre">django.db.models.CharField</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="account.models.Account.kind">
+<code class="descname">kind</code><a class="headerlink" href="#account.models.Account.kind" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The type of account.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://django.readthedocs.io/en/latest/ref/models/fields.html#django.db.models.CharField" title="(in Django v2.1)"><code class="docutils literal"><span class="pre">django.db.models.CharField</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="account.models.Account.number">
+<code class="descname">number</code><a class="headerlink" href="#account.models.Account.number" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Unique account number.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://django.readthedocs.io/en/latest/ref/models/fields.html#django.db.models.IntegerField" title="(in Django v2.1)"><code class="docutils literal"><span class="pre">django.db.models.IntegerField</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="account.models.Account.chart">
+<code class="descname">chart</code><a class="headerlink" href="#account.models.Account.chart" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Related chart.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://django.readthedocs.io/en/latest/ref/models/fields.html#django.db.models.ForeignKey" title="(in Django v2.1)"><code class="docutils literal"><span class="pre">django.db.models.ForeignKey</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="account.models.Account.balance">
+<code class="descname">balance</code><a class="headerlink" href="#account.models.Account.balance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Current balance of the account.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference external" href="http://django.readthedocs.io/en/latest/ref/models/fields.html#django.db.models.FloatField" title="(in Django v2.1)"><code class="docutils literal"><span class="pre">django.db.models.FloatField</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="account.models.Account.account_kind">
+<code class="descname">account_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/account/models.html#Account.account_kind"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#account.models.Account.account_kind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the integer value of the account kind.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="account.models.Account.account_name">
+<code class="descname">account_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/account/models.html#Account.account_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#account.models.Account.account_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return account name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="account.models.Account.account_number">
+<code class="descname">account_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/account/models.html#Account.account_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#account.models.Account.account_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the account number.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul class="globaltoc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../gaap.html">GAAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transaction.html">Transactions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transaction.html#transaction-modules">Transaction Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="transaction.html">transaction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../transaction.html#transaction-theory">Transaction Theory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../transaction.html#transaction-as-the-atom-of-accounting">Transaction as the Atom of Accounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../transaction.html#testing-transactions">Testing Transactions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../account.html">Accounts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../account.html#account-notes">Account Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../account.html#what-is-an-account">What is an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../account.html#what-the-fundamental-parts-of-an-account">What the fundamental parts of an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../account.html#what-are-the-qualities-of-an-account-that-can-be-tested">What are the qualities of an account that can be tested?</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../account.html#account-modules">Account Modules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../account.html#how-do-we-test-these-qualities">How do we test these qualities?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chart-of-accounts.html">Chart of Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chart-of-accounts.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chart-of-accounts.html#approach">Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../chart-of-accounts.html#chart-modules">Chart Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../chart-of-accounts.html#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/notes/modules/account.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, ECLA.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/notes/modules/account.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,20 @@
+Views Module for Chart App
+==========================
+
+.. automodule:: chart.views
+
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      index
+   
+   .. autofunction:: index
+
+   
+   
+   
+
+   
+   
+   
