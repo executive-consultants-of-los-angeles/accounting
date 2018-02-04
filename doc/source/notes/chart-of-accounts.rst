@@ -1,3 +1,4 @@
+=================
 Chart of Accounts
 =================
 
@@ -13,8 +14,8 @@ While that sounds simple, the author has yet to see software that could accompli
 
 As for the rest of the accounting software currently extant, at least as far as the author has seen, the closest anything comes to what would properly be called a chart is a list of names and numbers that may or may not also provide links to the data contained inside the accounts described.
 
-Modules
--------
+Chart Modules
+=============
 
 .. toctree:: 
 

@@ -1,5 +1,5 @@
 """
-.. module:: chart.models
+.. module:: newhart.chart.models
    :platform: Unix, Windows
    :synopsis: Module for the chart of accounts class. (Chart)
 

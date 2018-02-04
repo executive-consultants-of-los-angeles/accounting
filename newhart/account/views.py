@@ -1,5 +1,5 @@
 """
-.. module:: account.views
+.. module:: newhart.account.views
    :platform: Unix, Windows
    :synopsis: Views module for account app.
 
@@ -13,8 +13,9 @@ from django.shortcuts import render
 def index(request):
     """Render the index for the account app.
 
-    :param request HttpRequest: A request from Django.
-    :returns:  HttpResponse
+    :param request: A request from Django.
+    :type request: :any:`django:django.http.HttpRequest`
+    :rtype: :any:`django:django.http.HttpResponse`
     :raises: AttributeError, KeyError
     """
 

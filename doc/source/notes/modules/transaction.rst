@@ -1,13 +1,8 @@
-Transaction Model
+transaction
 =================
 
-.. currentmodule:: transaction
+.. automodule:: transaction.views
+   :members:
 
-.. autosummary:: transaction
-   :toctree:
-
-
-.. automodule:: transaction
-
-
-.. autoclass:: transaction.models.Transaction
+.. automodule:: transaction.models
+   :members:

@@ -1,5 +1,5 @@
 """
-.. module:: chart.views
+.. module:: newhart.chart.views
    :platform: Unix, Windows
    :synopsis: Views module for chart app.
 
@@ -18,7 +18,10 @@ from transaction.models import Transaction
 def index(request):
     """Render the index for the Chart of Accounts.
 
-    :param request HTTPRequest: A request sent from Django."""
+    :param request: A request sent from Django.
+    :type request: :any:`django:django.http.HttpRequest`
+    :rtype: :any:`django:django.http.HttpResponse`
+    """
 
     for account in Account.objects.all():
         transactions = Transaction.objects.filter(left_account=account).first()

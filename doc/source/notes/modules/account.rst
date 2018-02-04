@@ -1,9 +1,9 @@
-Account Module 
-==============
+account
+=======
 
-.. currentmodule:: account
-
-.. autosummary:: account
-
-.. autoclass:: account.models.Account 
+.. automodule:: account.views
    :members:
+
+.. automodule:: account.models
+   :members:
+
