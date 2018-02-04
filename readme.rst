@@ -23,4 +23,14 @@ accounting
 Future home to the best accouting software ever written.
 ........................................................
 
-http://www.accounting.com/resources/gaap/
+
+.. _`Generally Accepted Accounting Principles`: http://www.accounting.com/resources/gaap/
+
+
+`Generally Accepted Accounting Principles`_
+
+
+.. _bootstrap: https://getbootstrap.com/docs/3.3/getting-started/#examples
+
+
+Here's the getting started guide for bootstrap_.

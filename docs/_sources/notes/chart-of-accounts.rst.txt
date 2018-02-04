@@ -1,10 +1,11 @@
+=================
 Chart of Accounts
 =================
 
 Definition
 ----------
 
-Theoretically at least this is meant to be a chart that displays in a meaninful way all of the accounts contained in a company's books.
+This is usually kept as a list the names and numbers of accounts.  
 
 Approach
 --------
@@ -13,9 +14,17 @@ While that sounds simple, the author has yet to see software that could accompli
 
 As for the rest of the accounting software currently extant, at least as far as the author has seen, the closest anything comes to what would properly be called a chart is a list of names and numbers that may or may not also provide links to the data contained inside the accounts described.
 
+Chart Modules
+=============
+
+.. toctree:: 
+
+   modules/chart
+
 Testing
 -------
 
-So that's a lofty goal: how the hell do we get there?  The first thing, I'd say, is to write some tests that describe what a chart of accounts looks like to a computing machine, then maybe see if we can get the software to pass those tests.
+.. _`this helpful guide`: http://fishi.devtail.io/weblog/2015/03/02/functional-headless-ui-testing-django-selenium/
 
-Once we're realtively certain of our ability to produce data that can be understood and maniuplated by the machines we'll want to write some tests (perhaps with Selenium?) of a functional nature so that we can be sure of our ability to make the machine-readable data meaningful to humans as well. This is the second layer of the interface, as well as the second layer of the field of accounting, at least as it is being defined in the extremely limited scope of this software.
+The main components of the Chart of Accounts from Newhart's perpsective are all in the user interface and so they require mostly user interface tests.  Because Newhart uses the Django web framework, we can make use of the information in `this helpful guide`_ for setting up basic functional ui tests with Selenium.
+

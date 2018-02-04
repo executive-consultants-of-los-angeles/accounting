@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Transaction Theory &#8212; accounting v0.0.1 documentation</title>
+    <title>Transactions &#8212; accounting v0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Account" href="account.html" />
+    <link rel="next" title="transaction" href="modules/transaction.html" />
     <link rel="prev" title="GAAP" href="gaap.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -41,13 +41,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="transaction-theory">
-<h1>Transaction Theory<a class="headerlink" href="#transaction-theory" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="transactions">
+<h1>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="transaction-modules">
+<h2>Transaction Modules<a class="headerlink" href="#transaction-modules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules/transaction.html">transaction</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="transaction-theory">
+<h2>Transaction Theory<a class="headerlink" href="#transaction-theory" title="Permalink to this headline">¶</a></h2>
 <p>The aim of this document is to define clearly what an accounting transaction
 is in such a way that it can be easily understood by both machines and
 humans.</p>
 <div class="section" id="transaction-as-the-atom-of-accounting">
-<h2>Transaction as the Atom of Accounting<a class="headerlink" href="#transaction-as-the-atom-of-accounting" title="Permalink to this headline">¶</a></h2>
+<h3>Transaction as the Atom of Accounting<a class="headerlink" href="#transaction-as-the-atom-of-accounting" title="Permalink to this headline">¶</a></h3>
 <p>If you look at the accounting equation (assets = liabilities - equity) long
 enough it will eventually occur to you that accounting as an idea can be
 analyzed and dissected into its constituent parts, which parts can then
@@ -72,7 +82,7 @@ any amount will be either a credit or debit in the left account and that
 implies a credit or debit in the right account.</p>
 </div>
 <div class="section" id="testing-transactions">
-<h2>Testing Transactions<a class="headerlink" href="#testing-transactions" title="Permalink to this headline">¶</a></h2>
+<h3>Testing Transactions<a class="headerlink" href="#testing-transactions" title="Permalink to this headline">¶</a></h3>
 <p>That’s great, but what’s this mean for the lowly developer of accounting
 software?  Well, it means that an at least not terrible place to start
 writing such software would be to write tests that check for the four
@@ -84,21 +94,72 @@ data will be used to test that object for the presence of the
 four required bits of information and any required relationships.</p>
 </div>
 </div>
+</div>
 
 
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="gaap.html" title="previous chapter">GAAP</a></li>
-      <li>Next: <a href="account.html" title="next chapter">Account</a></li>
-  </ul></li>
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Transactions</a><ul>
+<li><a class="reference internal" href="#transaction-modules">Transaction Modules</a></li>
+<li><a class="reference internal" href="#transaction-theory">Transaction Theory</a><ul>
+<li><a class="reference internal" href="#transaction-as-the-atom-of-accounting">Transaction as the Atom of Accounting</a></li>
+<li><a class="reference internal" href="#testing-transactions">Testing Transactions</a></li>
 </ul>
-</div>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="globaltoc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gaap.html">GAAP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transactions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#transaction-modules">Transaction Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/transaction.html">transaction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#transaction-theory">Transaction Theory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transaction-as-the-atom-of-accounting">Transaction as the Atom of Accounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-transactions">Testing Transactions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="account.html#account-notes">Account Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="account.html#what-is-an-account">What is an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="account.html#what-the-fundamental-parts-of-an-account">What the fundamental parts of an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="account.html#what-are-the-qualities-of-an-account-that-can-be-tested">What are the qualities of an account that can be tested?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="account.html#account-modules">Account Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/account.html">account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="account.html#how-do-we-test-these-qualities">How do we test these qualities?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chart-of-accounts.html">Chart of Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chart-of-accounts.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chart-of-accounts.html#approach">Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chart-of-accounts.html#chart-modules">Chart Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chart-of-accounts.html#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/notes/transaction.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">

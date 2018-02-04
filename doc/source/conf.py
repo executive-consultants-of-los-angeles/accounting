@@ -124,13 +124,7 @@ html_static_path = ['_static']
 #
 # This is required for the alabaster theme
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {
-    '**': [
-        'relations.html',  # needs 'show_related': True theme option to display
-        'searchbox.html',
-    ]
-}
-
+html_sidebars = {'**': ['localtoc.html', 'globaltoc.html', 'sourcelink.html', 'searchbox.html']}
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -211,4 +205,8 @@ epub_exclude_files = ['search.html']
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    'python': ('http://python.readthedocs.org/en/v2.7.2/', None),
+    'django': ('http://django.readthedocs.org/en/latest/', None),
+    'sphinx': ('http://sphinx.readthedocs.org/en/latest/', None),
+}

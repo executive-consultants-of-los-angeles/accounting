@@ -24,8 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Account Model" href="../modules/account.html" />
-    <link rel="prev" title="Account" href="account.html" />
+    <link rel="next" title="chart" href="modules/chart.html" />
+    <link rel="prev" title="account" href="modules/account.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -45,17 +45,24 @@
 <h1>Chart of Accounts<a class="headerlink" href="#chart-of-accounts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
-<p>Theoretically at least this is meant to be a chart that displays in a meaninful way all of the accounts contained in a company’s books.</p>
+<p>This is usually kept as a list the names and numbers of accounts.</p>
 </div>
 <div class="section" id="approach">
 <h2>Approach<a class="headerlink" href="#approach" title="Permalink to this headline">¶</a></h2>
 <p>While that sounds simple, the author has yet to see software that could accomplish this apparently fundamental to accounting task.  Indeed, to my knowledge most accountants (at least in part due to this)  keep at least two sets of books: one in Excel and one in whatever accounting software their employer is using.  The implication here is that so far the best accounting software yet produced is Excel.  Excel does not produce meaningful charts of accounts without more effort than the author is willing to put in.  So, the aim here is to create something that will by default allow easy examination of a company’s chart of accounts and the relationships contained therein.</p>
 <p>As for the rest of the accounting software currently extant, at least as far as the author has seen, the closest anything comes to what would properly be called a chart is a list of names and numbers that may or may not also provide links to the data contained inside the accounts described.</p>
+<div class="section" id="chart-modules">
+<h3>Chart Modules<a class="headerlink" href="#chart-modules" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules/chart.html">chart</a></li>
+</ul>
+</div>
+</div>
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<p>So that’s a lofty goal: how the hell do we get there?  The first thing, I’d say, is to write some tests that describe what a chart of accounts looks like to a computing machine, then maybe see if we can get the software to pass those tests.</p>
-<p>Once we’re realtively certain of our ability to produce data that can be understood and maniuplated by the machines we’ll want to write some tests (perhaps with Selenium?) of a functional nature so that we can be sure of our ability to make the machine-readable data meaningful to humans as well. This is the second layer of the interface, as well as the second layer of the field of accounting, at least as it is being defined in the extremely limited scope of this software.</p>
+<p>The main components of the Chart of Accounts from Newhart’s perpsective are all in the user interface and so they require mostly user interface tests.  Because Newhart uses the Django web framework, we can make use of the information in <a class="reference external" href="http://fishi.devtail.io/weblog/2015/03/02/functional-headless-ui-testing-django-selenium/">this helpful guide</a> for setting up basic functional ui tests with Selenium.</p>
 </div>
 </div>
 
@@ -64,15 +71,65 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="account.html" title="previous chapter">Account</a></li>
-      <li>Next: <a href="../modules/account.html" title="next chapter">Account Model</a></li>
-  </ul></li>
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Chart of Accounts</a><ul>
+<li><a class="reference internal" href="#definition">Definition</a></li>
+<li><a class="reference internal" href="#approach">Approach</a><ul>
+<li><a class="reference internal" href="#chart-modules">Chart Modules</a></li>
 </ul>
-</div>
+</li>
+<li><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+<ul class="globaltoc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gaap.html">GAAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transaction.html">Transactions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transaction.html#transaction-modules">Transaction Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/transaction.html">transaction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="transaction.html#transaction-theory">Transaction Theory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="transaction.html#transaction-as-the-atom-of-accounting">Transaction as the Atom of Accounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transaction.html#testing-transactions">Testing Transactions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="account.html#account-notes">Account Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="account.html#what-is-an-account">What is an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="account.html#what-the-fundamental-parts-of-an-account">What the fundamental parts of an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="account.html#what-are-the-qualities-of-an-account-that-can-be-tested">What are the qualities of an account that can be tested?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="account.html#account-modules">Account Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/account.html">account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="account.html#how-do-we-test-these-qualities">How do we test these qualities?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chart of Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#approach">Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chart-modules">Chart Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/notes/chart-of-accounts.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
