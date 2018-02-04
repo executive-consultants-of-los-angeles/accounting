@@ -1,4 +1,11 @@
-"""Views module for chart app."""
+"""
+.. module:: chart.views
+   :platform: Unix, Windows
+   :synopsis: Views module for chart app.
+
+.. moduleauthor:: info@gahan-corporation.com
+
+"""
 # pylint: disable=no-member
 from django.shortcuts import render
 
@@ -9,7 +16,9 @@ from transaction.models import Transaction
 # Create your views here.
 
 def index(request):
-    """Render the index page."""
+    """Render the index for the Chart of Accounts.
+
+    :param request HTTPRequest: A request sent from Django."""
 
     for account in Account.objects.all():
         transactions = Transaction.objects.filter(left_account=account).first()

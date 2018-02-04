@@ -1,7 +1,13 @@
-Chart of Accounts Model
-=======================
+Chart of Accounts Module
+========================
 
-.. currentmodule:: chart.chart
+.. currentmodule:: chart
 
-.. autoclass:: Chart 
+.. autosummary::
+   :toctree: chart
+
+   models
+   views
+
+.. autoclass:: chart.models.Chart 
    :members:
