@@ -1,9 +1,7 @@
-chart\.views
-============
+Views Module for Chart of Accounts
+==================================
 
 .. automodule:: chart.views
-
-   
    
    .. rubric:: Functions
 
@@ -11,7 +9,7 @@ chart\.views
    
       index
    
-   
+   .. autofunction:: index
 
    
    

@@ -7,7 +7,7 @@ Chart of Accounts Module
    :toctree: chart
 
    models
-   views
+   chart.views
 
 .. autoclass:: chart.models.Chart 
    :members:
