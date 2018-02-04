@@ -1,5 +1,5 @@
 """
-.. module:: chart.views
+.. module:: chart.models
    :platform: Unix, Windows
    :synopsis: Module for the chart of accounts class. (Chart)
 
@@ -15,7 +15,7 @@ class Chart(models.Model):
     .. attribute:: name
 
        :description: The name of the Chart of Accounts being manipulated.
-       :type: :obj:`django.db.models.Model`
+       :type: :obj:`django.db.models.CharField`
     """
 
     name = models.CharField("Chart", max_length=255)
