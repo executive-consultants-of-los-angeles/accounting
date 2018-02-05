@@ -7,11 +7,12 @@ class TestAccount(object):
     account = None
     kinds = ['asset', 'liability', 'equity', 'revenue', 'expense']
 
-    def test_write_accounts(self, account, accounts):
+    def test_write_accounts(self, account, accounts, chart):
         """Test that we can save accounts by writing them."""
         self.account = account
         for item in accounts:
             account_ins = account(
+                chart=chart,
                 name=item.get('name'),
                 number=item.get('number')
             )
@@ -20,10 +21,10 @@ class TestAccount(object):
             if not account_ins.id:
                 raise AssertionError("Account failed to save.")
 
-    def test_read_accounts(self, account, accounts):
+    def test_read_accounts(self, account, accounts, chart):
         """Test that we can read accounts from the db."""
         self.account = accounts
-        account_objects = account.objects.all()
+        account_objects = account.objects.filter(chart=chart)
         if not account_objects:
             raise AssertionError("Could not read accounts.")
 

@@ -19,7 +19,7 @@ def chart():
     charts_yml = yml_file.read()
     yml_file.close()
 
-    for item in yml_file.safe_load(charts_yml):
+    for item in yaml.safe_load(charts_yml):
         local_chart = Chart(
             name=item.get('name')
         )
