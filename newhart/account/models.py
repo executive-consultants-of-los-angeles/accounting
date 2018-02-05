@@ -6,7 +6,9 @@
 .. moduleauthor:: info@gahan-corporation.com
 
 """
+# pylint: disable=too-few-public-methods
 from django.db import models
+from django.forms import ModelForm
 
 from chart.models import Chart
 
@@ -67,3 +69,26 @@ class Account(models.Model):
     def __str__(self):
         """String for repr."""
         return "{} {}".format(self.number, self.name)
+
+
+class AccountForm(ModelForm):
+    """Class that defines account objects.
+
+    .. attribute:: name
+
+       :description: The name of the Chart of Accounts being manipulated.
+       :type: :any:`django:django.db.models.CharField`
+    """
+    class Meta:
+        """Meta class for AccountForm.
+
+        .. attribute:: fields
+
+           :description: List of fields to includet
+
+        .. attribute:: model
+
+           :description: Model this form is about.
+        """
+        fields = "__all__"
+        model = Account

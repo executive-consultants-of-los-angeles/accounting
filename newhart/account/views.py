@@ -6,10 +6,11 @@
 .. moduleauthor:: info@gahan-corporation.com
 
 """
-# pylint: disable=no-member
+# pylint: disable=no-member,invalid-name
 from django.shortcuts import render
 
 from account.models import Account
+from account.models import AccountForm
 
 # Create your views here.
 
@@ -22,16 +23,14 @@ def index(request):
     :raises: AttributeError, KeyError
     """
     context = {'accounts':Account.objects.all().values()}
-    return render(request, 'account/index.html', context=context)
+    if request.method == "POST":
+        formset = AccountForm(
+            request.POST,
+        )
+        if formset.is_valid():
+            formset.save()
+    else:
+        formset = AccountForm()
 
-def create_account(self, request):
-    """Render the index for the account app.
-
-    :param request: A request from Django.
-    :type request: :any:`django:django.http.HttpRequest`
-    :rtype: :any:`django:django.http.HttpResponse`
-    :raises: AttributeError, KeyError
-    """
-    print(self)
-
-    return render(request, 'account/create.html')
+    context.update({'formset': formset})
+    return render(request, 'account/index.html', context)
