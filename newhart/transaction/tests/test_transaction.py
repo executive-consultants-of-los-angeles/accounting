@@ -5,16 +5,22 @@ import datetime
 class TestTransaction(object):
     """Transaction test cases."""
 
+    accounts = None
     transaction = None
 
-    def test_save_transaction(self, transactions, transaction):
+    def test_save_transaction(self, account, transactions, transaction, accounts):
         """Save transactions to the db."""
+        self.accounts = accounts
         self.transaction = transaction()
         for item in transactions:
+            local_left = account.objects.filter(name=item.get('left_account')).first()
+            local_right = account.objects.filter(name=item.get('right_account')).first()
             ltr = transaction.objects.create(
                 amount=item.get('amount'),
                 date=item.get('date'),
-                description=item.get('description')
+                description=item.get('description'),
+                left_account=local_left,
+                right_account=local_right
             )
             ltr.save()
 
@@ -67,37 +73,27 @@ class TestTransaction(object):
             if not isinstance(self.transaction.amount, float):
                 raise AssertionError()
 
-    def test_transaction_left_account(self, transactions, transaction, accounts):
+    def test_transaction_left_account(self, account, transactions, transaction, accounts):
         """Test that the left account exists."""
+        self.accounts = accounts
         self.transaction = transaction()
         for item in transactions:
-            self.transaction.left_account = item.get('left_account')
-            left_account = self.transaction.transaction_left_account()
-            if not isinstance(left_account, str):
-                raise AssertionError()
-            if left_account not in [
-                    account.get('name') for account in accounts]:
-                raise AssertionError()
-            if self.transaction.left_account not in [
-                    account.get('name') for account in accounts]:
+            local_account = account.objects.filter(name=item.get('left_account')).first()
+            self.transaction.left_account = local_account
+            if self.transaction.left_account != local_account:
                 raise AssertionError()
             if not isinstance(item, dict):
                 raise AssertionError()
 
-    def test_transaction_right_account(self, transactions, transaction, accounts):
+    def test_transaction_right_account(self, account, transactions, transaction, accounts):
         """Test the right account exists."""
+        self.accounts = accounts
         self.transaction = transaction()
         for item in transactions:
-            self.transaction.right_account = item.get('right_account')
-            right_account = self.transaction.transaction_right_account()
+            local_account = account.objects.filter(name=item.get('right_account')).first()
+            self.transaction.right_account = local_account
 
-            if right_account not in [
-                    account.get('name') for account in accounts]:
-                raise AssertionError()
-            if not isinstance(right_account, str):
-                raise AssertionError()
-            if self.transaction.right_account not in [
-                    account.get('name') for account in accounts]:
+            if self.transaction.right_account != local_account:
                 raise AssertionError()
             if not isinstance(item, dict):
                 raise AssertionError()
@@ -114,8 +110,9 @@ class TestTransaction(object):
             if not isinstance(self.transaction.date, datetime.date):
                 raise AssertionError()
 
-    def test_transaction_description(self, transactions, transaction):
+    def test_transaction_description(self, accounts, transactions, transaction):
         """Test the description of the transaction."""
+        self.accounts = accounts
         self.transaction = transaction()
         for item in transactions:
             self.transaction.description = item.get('description')
