@@ -5,14 +5,16 @@ class TestAccount(object):
     """Test class for account module."""
 
     account = None
+    chart = None
     kinds = ['asset', 'liability', 'equity', 'revenue', 'expense']
 
-    def test_write_accounts(self, account, accounts, chart):
+    def test_write_accounts(self, chart, accounts, account):
         """Test that we can save accounts by writing them."""
         self.account = account
+        local_chart = chart.objects.all().first()
         for item in accounts:
             account_ins = account(
-                chart=chart,
+                chart=local_chart,
                 name=item.get('name'),
                 number=item.get('number')
             )
@@ -21,10 +23,11 @@ class TestAccount(object):
             if not account_ins.id:
                 raise AssertionError("Account failed to save.")
 
-    def test_read_accounts(self, account, accounts, chart):
+    def test_read_accounts(self, chart, account, accounts):
         """Test that we can read accounts from the db."""
         self.account = accounts
-        account_objects = account.objects.filter(chart=chart)
+        local_chart = chart.objects.all().first()
+        account_objects = account.objects.filter(chart=local_chart)
         if not account_objects:
             raise AssertionError("Could not read accounts.")
 
@@ -39,17 +42,16 @@ class TestAccount(object):
         if up_account.name != "Not the same.":
             raise AssertionError("Failed to update account.")
 
-    def test_delete_account(self, account, accounts):
+    def test_delete_account(self, chart, account, accounts):
         """Test delete account."""
         self.account = accounts
-
-        del_account = account.objects.get(name=accounts[0].get('name'))
-
-        # if del_account.delete() != (1, {'account.Account': 1}):
-        #   raise AssertionError("Incorrect return on delete.")
+        local_chart = chart.objects.all().first()
 
         del_account = account.objects.filter(
-            name=accounts[0].get('name'))
+            chart=local_chart,
+            name=accounts[0].get('name')
+        )
+        del_account.delete()
 
         if del_account:
             raise AssertionError("Did not delete.")
@@ -69,6 +71,7 @@ class TestAccount(object):
 
     def test_account_number(self, accounts, account):
         """The account number should be integer."""
+
         for item in accounts:
             self.account = account
             account_ins = account()
