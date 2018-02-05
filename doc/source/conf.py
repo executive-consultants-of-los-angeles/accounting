@@ -55,6 +55,12 @@ extensions = [
 ]
 
 autosummary_generate = True
+autodoc_default_flags = [
+    'members',
+    'inherited-members',
+    'show-inheritance'
+]
+autodoc_member_order = 'groupwise'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -124,7 +130,14 @@ html_static_path = ['_static']
 #
 # This is required for the alabaster theme
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {'**': ['localtoc.html', 'globaltoc.html', 'sourcelink.html', 'searchbox.html']}
+html_sidebars = {
+    '**': [
+        'localtoc.html',
+        'globaltoc.html',
+        'sourcelink.html',
+        'searchbox.html'
+    ]
+}
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -206,7 +219,7 @@ epub_exclude_files = ['search.html']
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
-    'python': ('http://python.readthedocs.org/en/v2.7.2/', None),
+    'python': ('https://docs.python.org/3/', None),
     'django': ('http://django.readthedocs.org/en/latest/', None),
     'sphinx': ('http://sphinx.readthedocs.org/en/latest/', None),
 }

@@ -7,6 +7,7 @@
 """
 # pylint: disable=no-member,invalid-name
 from django.shortcuts import render
+from django.views.generic.edit import FormView 
 
 from account.models import Account
 from account.models import AccountForm
@@ -26,11 +27,23 @@ def index(request):
     if request.method == "POST":
         formset = AccountForm(
             request.POST,
-        )
+        ).as_table()
         if formset.is_valid():
             formset.save()
     else:
-        formset = AccountForm()
+        formset = AccountForm().as_table()
 
     context.update({'formset': formset})
-    return render(request, 'account/index.html', context)
+    return render(request, 'account/account.html', context)
+
+class AccountUpdate(FormView):
+    """Generic view for updating Account."""
+
+    #: This view references the Account model.
+    model = Account
+    #: Only list number and name fields.
+    fields = [
+        'number', 'name'
+    ]
+    #: Set the template file name suffix.
+    template_name_suffix = '_update'

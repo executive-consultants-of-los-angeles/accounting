@@ -72,23 +72,10 @@ class Account(models.Model):
 
 
 class AccountForm(ModelForm):
-    """Class that defines account objects.
-
-    .. attribute:: name
-
-       :description: The name of the Chart of Accounts being manipulated.
-       :type: :any:`django:django.db.models.CharField`
-    """
+    """Class that defines account objects."""
     class Meta:
-        """Meta class for AccountForm.
-
-        .. attribute:: fields
-
-           :description: List of fields to includet
-
-        .. attribute:: model
-
-           :description: Model this form is about.
-        """
+        """Meta class for AccountForm."""
+        #: Use all fields by default.
         fields = "__all__"
+        #: This form references the Account model.
         model = Account
