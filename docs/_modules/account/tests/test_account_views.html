@@ -1,0 +1,150 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>account.tests.test_account_views &#8212; accounting v0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     'v0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for account.tests.test_account_views</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: newhart.account.views</span>
+<span class="sd">   :platform: Unix, Windows</span>
+<span class="sd">   :synopsis: Tests for the account module&#39;s views.</span>
+
+<span class="sd">.. moduleauthor:: info@gahan-corporation.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">django.test</span> <span class="k">import</span> <span class="n">Client</span>
+
+
+<div class="viewcode-block" id="TestAccountViews"><a class="viewcode-back" href="../../../notes/modules/account.html#account.tests.test_account_views.TestAccountViews">[docs]</a><span class="k">class</span> <span class="nc">TestAccountViews</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Test class for account module views.&quot;&quot;&quot;</span>
+
+    <span class="c1">#: Client instance for testing requests.</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
+    <span class="n">chart</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kinds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;asset&#39;</span><span class="p">,</span> <span class="s1">&#39;liability&#39;</span><span class="p">,</span> <span class="s1">&#39;equity&#39;</span><span class="p">,</span> <span class="s1">&#39;revenue&#39;</span><span class="p">,</span> <span class="s1">&#39;expense&#39;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="TestAccountViews.test_get_index"><a class="viewcode-back" href="../../../notes/modules/account.html#account.tests.test_account_views.TestAccountViews.test_get_index">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the index for testing.</span>
+
+<span class="sd">        :return: :any:`django:django.http.HttpResponse`</span>
+<span class="sd">        :raises: :any:`AttributeError`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Other than 200 status code.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span></div>
+
+<div class="viewcode-block" id="TestAccountViews.test_post_values"><a class="viewcode-back" href="../../../notes/modules/account.html#account.tests.test_account_views.TestAccountViews.test_post_values">[docs]</a>    <span class="k">def</span> <span class="nf">test_post_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Post values to the index.&quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">()</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul class="globaltoc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/gaap.html">GAAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/transaction.html">Transactions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/transaction.html#transaction-modules">Transaction Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/modules/transaction.html">transaction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/transaction.html#transaction-theory">Transaction Theory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/transaction.html#transaction-as-the-atom-of-accounting">Transaction as the Atom of Accounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/transaction.html#testing-transactions">Testing Transactions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/account.html">Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/account.html#account-notes">Account Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/account.html#what-is-an-account">What is an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/account.html#what-the-fundamental-parts-of-an-account">What the fundamental parts of an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/account.html#what-are-the-qualities-of-an-account-that-can-be-tested">What are the qualities of an account that can be tested?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/account.html#account-modules">Account Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/modules/account.html">account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/modules/account.html#account-tests">account_tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../notes/chart-of-accounts.html">Chart of Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/chart-of-accounts.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/chart-of-accounts.html#approach">Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../notes/chart-of-accounts.html#chart-modules">Chart Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../notes/chart-of-accounts.html#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, ECLA.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

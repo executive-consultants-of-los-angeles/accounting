@@ -48,7 +48,9 @@
 <span class="sd">.. moduleauthor:: info@gahan-corporation.com</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=too-few-public-methods</span>
 <span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.forms</span> <span class="k">import</span> <span class="n">ModelForm</span>
 
 <span class="kn">from</span> <span class="nn">chart.models</span> <span class="k">import</span> <span class="n">Chart</span>
 
@@ -109,6 +111,16 @@
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;String for repr.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AccountForm"><a class="viewcode-back" href="../../notes/modules/account.html#account.models.AccountForm">[docs]</a><span class="k">class</span> <span class="nc">AccountForm</span><span class="p">(</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Class that defines account objects.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="AccountForm.Meta"><a class="viewcode-back" href="../../notes/modules/account.html#account.models.AccountForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Meta class for AccountForm.&quot;&quot;&quot;</span>
+        <span class="c1">#: Use all fields by default.</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="s2">&quot;__all__&quot;</span>
+        <span class="c1">#: This form references the Account model.</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Account</span></div></div>
 </pre></div>
 
           </div>
@@ -138,7 +150,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../notes/account.html#account-modules">Account Modules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../notes/modules/account.html">account</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../notes/account.html#how-do-we-test-these-qualities">How do we test these qualities?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../notes/modules/account.html#account-tests">account_tests</a></li>
 </ul>
 </li>
 </ul>
