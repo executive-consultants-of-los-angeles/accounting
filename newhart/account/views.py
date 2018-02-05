@@ -6,7 +6,10 @@
 .. moduleauthor:: info@gahan-corporation.com
 
 """
+# pylint: disable=no-member
 from django.shortcuts import render
+
+from account.models import Account
 
 # Create your views here.
 
@@ -18,5 +21,17 @@ def index(request):
     :rtype: :any:`django:django.http.HttpResponse`
     :raises: AttributeError, KeyError
     """
+    context = Account.objects.all().values_list()
+    return render(request, 'account/index.html', context=context)
 
-    return render(request, 'account/index.html')
+def create_account(self, request):
+    """Render the index for the account app.
+
+    :param request: A request from Django.
+    :type request: :any:`django:django.http.HttpRequest`
+    :rtype: :any:`django:django.http.HttpResponse`
+    :raises: AttributeError, KeyError
+    """
+    print(self)
+
+    return render(request, 'account/create.html')

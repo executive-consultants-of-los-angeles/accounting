@@ -3,6 +3,7 @@
 from django.contrib import admin
 from django.urls import path
 from chart import views
+from account import views as account_views
 
 """
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -21,5 +22,6 @@ Including another URLconf
 
 urlpatterns = [
     path('', views.index, name='home'),
+    path('account/', account_views.index, name='accounts_list'),
     path('admin/', admin.site.urls),
 ]
