@@ -4,7 +4,6 @@
    :synopsis: Views module for account app.
 
 .. moduleauthor:: info@gahan-corporation.com
-
 """
 # pylint: disable=no-member,invalid-name
 from django.shortcuts import render
@@ -14,6 +13,7 @@ from account.models import AccountForm
 
 # Create your views here.
 
+
 def index(request):
     """Render the index for the account app.
 
@@ -22,7 +22,7 @@ def index(request):
     :rtype: :any:`django:django.http.HttpResponse`
     :raises: AttributeError, KeyError
     """
-    context = {'accounts':Account.objects.all().values()}
+    context = {'accounts': Account.objects.all().order_by('number').values()}
     if request.method == "POST":
         formset = AccountForm(
             request.POST,
