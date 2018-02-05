@@ -6,8 +6,25 @@ import pytest
 import newhart.loadapps
 
 from account.models import Account
+from chart.models import Chart
 
 newhart.loadapps.main()
+
+@pytest.fixture(scope='session')
+def chart():
+    """Save and return a chart object."""
+    path = os.path.join(os.path.dirname(__file__), "../../chart/yml")
+
+    yml_file = open('{}/chart.yml'.format(path), 'r')
+    charts_yml = yml_file.read()
+    yml_file.close()
+
+    for item in yml_file.safe_load(charts_yml):
+        local_chart = Chart(
+            name=item.get('name')
+        )
+        local_chart.save()
+    return local_chart
 
 @pytest.fixture(scope='session')
 def account():
