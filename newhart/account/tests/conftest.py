@@ -26,6 +26,7 @@ def accounts():
 
     for item in yaml.safe_load(accounts_yml):
         local_account = Account(
+            chart_id=1,
             name=item.get('name'),
             number=item.get('number')
         )

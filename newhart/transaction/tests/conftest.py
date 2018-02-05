@@ -5,6 +5,7 @@ import pytest
 
 import newhart.loadapps
 
+from account.models import Account
 from transaction.models import Transaction
 
 newhart.loadapps.main()
@@ -44,5 +45,14 @@ def accounts():
     yml_file = open('{}/account.yml'.format(path), 'r')
     accounts_yml = yml_file.read()
     yml_file.close()
+
+    for item in yaml.safe_load(accounts_yml):
+        lay = Account(
+            number=item.get('number'),
+            name=item.get('name'),
+            kind=item.get('kind'),
+            chart=1
+        )
+        lay.save()
 
     return yaml.safe_load(accounts_yml)

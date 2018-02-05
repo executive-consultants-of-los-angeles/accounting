@@ -7,8 +7,9 @@ class TestTransaction(object):
 
     transaction = None
 
-    def test_save_transaction(self, transactions, transaction):
+    def test_save_transaction(self, transactions, transaction, accounts):
         """Save transactions to the db."""
+        print(accounts)
         self.transaction = transaction()
         for item in transactions:
             ltr = transaction.objects.create(

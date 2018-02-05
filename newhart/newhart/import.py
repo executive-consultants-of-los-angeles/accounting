@@ -47,6 +47,8 @@ def main():
     for item in yaml.safe_load(transactions_yml):
         left_account = Account.objects.get(name=item.get('left_account'))
         right_account = Account.objects.get(name=item.get('right_account'))
+        print(left_account)
+        print(right_account)
         local_transaction = Transaction(
             description=item.get('description'),
             left_account=left_account,
