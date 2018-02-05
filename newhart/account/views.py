@@ -21,7 +21,7 @@ def index(request):
     :rtype: :any:`django:django.http.HttpResponse`
     :raises: AttributeError, KeyError
     """
-    context = Account.objects.all().values_list()
+    context = {'accounts':Account.objects.all().values()}
     return render(request, 'account/index.html', context=context)
 
 def create_account(self, request):
