@@ -14,7 +14,7 @@ RUN git clone https://github.com/gahan-corporation/newhart.git /srv/newhart
 WORKDIR /srv/newhart
 RUN git checkout v0.0.1
 ENV DJANGO_SETTINGS_MODULE newhart.settings
-ENV CODACY_PROJECT_TOKEN c0d904f90e314742be3c75197bf7d86c
+ENV CODACY_PROJECT_TOKEN 61a8f55ecf394f68a0b4c2d1c0f14d8a 
 ENV CC_TEST_REPORTER_ID 82428da430f003a16e79bb4da19d1f4b045712dee9c8dff967462c6580a1b567
 RUN pip install -r /srv/newhart/.requirements
 EXPOSE 8000
