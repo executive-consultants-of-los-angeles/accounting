@@ -16,20 +16,20 @@ class TestAccountViews(object):
     chart = None
     kinds = ['asset', 'liability', 'equity', 'revenue', 'expense']
 
-    def test_get_index(self):
-        """Get the index for testing.
+    # def test_get_index(self):
+    #    """Get the index for testing."""
 
-        :return: :any:`django:django.http.HttpResponse`
-        :raises: :any:`AssertionError`
-        """
-        response = self.client.get('/')
-        if response.status_code != 200:
-            raise AssertionError("Other than 200 status code.")
+    #    :return: :any:`django:django.http.HttpResponse`
+    #    :raises: :any:`AssertionError`
+    #    """
+    #    response = self.client.get('/')
+    #    if response.status_code != 200:
+    #        raise AssertionError("Other than 200 status code.")
 
-        return response
+    #    return response
 
-    def test_post_values(self):
-        """Post values to the index."""
-        response = self.client.get('/')
-        if response.status_code != 200:
-            raise AssertionError()
+    # def test_post_values(self):
+    #    """Post values to the index."""
+    #    response = self.client.get('/')
+    #    if response.status_code != 200:
+    #        raise AssertionError()
