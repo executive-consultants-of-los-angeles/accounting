@@ -16,19 +16,34 @@ def read(fname):
 
 
 setup(
-    name="accounting",
+    name="newhart",
     version="0.0.1",
     author="ECLA",
     author_email="cfo@ecla.solutiosn",
     description=("Accounting software for accountants."),
     license="The Unlicense",
     keywords="accounting",
-    packages=['account', 'transaction'],
+    package_dir={'': 'newhart'},
+    packages=[
+        'newhart',
+        'account',
+        'chart',
+        'transaction',
+    ],
     long_description=read('readme.rst'),
-    setup_requires=['pytest-runner'],
-    requires=['pyyaml'],
-    provides=['chart', 'account', 'transaction'],
-    tests_require=['pytest', 'nose'],
+    install_requires=[
+        'django',
+        'django-extensions',
+        'pyyaml',
+    ],
+    setup_requires=[
+        'pytest-runner'
+    ],
+    tests_require=[
+        'pytest',
+        'pytest-django',
+        'coverage'
+    ],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",

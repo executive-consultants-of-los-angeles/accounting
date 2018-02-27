@@ -24,7 +24,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Chart of Accounts" href="../notes/chart-of-accounts.html" />
+    <link rel="prev" title="Views Module for Chart of Accounts" href="chart/chart.views.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -42,126 +42,21 @@
             
   <div class="section" id="transaction-model">
 <h1>Transaction Model<a class="headerlink" href="#transaction-model" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="transaction.transaction.Transaction">
-<em class="property">class </em><code class="descclassname">transaction.transaction.</code><code class="descname">Transaction</code><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction" title="Permalink to this definition">¶</a></dt>
-<dd><p>A class for modeling accounting transactions.</p>
-<dl class="class">
-<dt id="transaction.transaction.Transaction.date">
-<em class="property">class </em><code class="descname">date</code><a class="headerlink" href="#transaction.transaction.Transaction.date" title="Permalink to this definition">¶</a></dt>
-<dd><p>date(year, month, day) –&gt; date object</p>
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.ctime">
-<code class="descname">ctime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.ctime" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return ctime() style string.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.fromordinal">
-<code class="descname">fromordinal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.fromordinal" title="Permalink to this definition">¶</a></dt>
-<dd><p>int -&gt; date corresponding to a proleptic Gregorian ordinal.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.fromtimestamp">
-<code class="descname">fromtimestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.fromtimestamp" title="Permalink to this definition">¶</a></dt>
-<dd><p>timestamp -&gt; local date from a POSIX timestamp (like time.time()).</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.isocalendar">
-<code class="descname">isocalendar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.isocalendar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a 3-tuple containing ISO year, week number, and weekday.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.isoformat">
-<code class="descname">isoformat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.isoformat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return string in ISO 8601 format, YYYY-MM-DD.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.isoweekday">
-<code class="descname">isoweekday</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.isoweekday" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the day of the week represented by the date.
-Monday == 1 … Sunday == 7</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.replace">
-<code class="descname">replace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.replace" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return date with new specified fields.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.strftime">
-<code class="descname">strftime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.strftime" title="Permalink to this definition">¶</a></dt>
-<dd><p>format -&gt; strftime() style string.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.timetuple">
-<code class="descname">timetuple</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.timetuple" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return time tuple, compatible with time.localtime().</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.today">
-<code class="descname">today</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.today" title="Permalink to this definition">¶</a></dt>
-<dd><p>Current date or datetime:  same as self.__class__.fromtimestamp(time.time()).</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.toordinal">
-<code class="descname">toordinal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.toordinal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return proleptic Gregorian ordinal.  January 1 of year 1 is day 1.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.date.weekday">
-<code class="descname">weekday</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#transaction.transaction.Transaction.date.weekday" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the day of the week represented by the date.
-Monday == 0 … Sunday == 6</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.transaction_amount">
-<code class="descname">transaction_amount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_amount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_amount" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return amount for transaction.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.transaction_date">
-<code class="descname">transaction_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_date"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_date" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return date of transaction.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.transaction_description">
-<code class="descname">transaction_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_description" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the description.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.transaction_left_account">
-<code class="descname">transaction_left_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_left_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_left_account" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the left (credit) account.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.transaction_right_account">
-<code class="descname">transaction_right_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_right_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_right_account" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the right (debit) account.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="transaction.transaction.Transaction.transaction_tid">
-<code class="descname">transaction_tid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/transaction.html#Transaction.transaction_tid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.transaction.Transaction.transaction_tid" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the tid.</p>
-</dd></dl>
-
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#module-transaction" title="transaction"><code class="xref py py-obj docutils literal"><span class="pre">transaction</span></code></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-transaction"></span><dl class="class">
+<dt id="transaction.models.Transaction">
+<em class="property">class </em><code class="descclassname">transaction.models.</code><code class="descname">Transaction</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transaction/models.html#Transaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transaction.models.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transaction model class.</p>
 </dd></dl>
 
 </div>
@@ -171,14 +66,44 @@ Monday == 0 … Sunday == 6</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../notes/chart-of-accounts.html" title="previous chapter">Chart of Accounts</a></li>
-  </ul></li>
+        <div class="sphinxsidebarwrapper"><ul class="globaltoc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../notes/gaap.html">GAAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/transaction.html">Transaction Theory</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/transaction.html#transaction-as-the-atom-of-accounting">Transaction as the Atom of Accounting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/transaction.html#testing-transactions">Testing Transactions</a></li>
 </ul>
-</div>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/account.html">Account</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/account.html#what-is-an-account">What is an account?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/account.html#what-the-fundamental-parts-of-an-account">What the fundamental parts of an account?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/account.html#what-are-the-qualities-of-an-account-that-can-be-tested">What are the qualities of an account that can be tested?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/account.html#how-do-we-test-these-qualities">How do we test these qualities?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/chart-of-accounts.html">Chart of Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/chart-of-accounts.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/chart-of-accounts.html#approach">Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/chart-of-accounts.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="account.html">Account Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chart.html">Chart of Accounts Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chart/chart.models.html">chart.models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chart/chart.views.html">Views Module for Chart of Accounts</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transaction Model</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</ul>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/modules/transaction.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -197,7 +122,7 @@ Monday == 0 … Sunday == 6</p>
       &copy;2017, ECLA.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

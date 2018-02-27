@@ -1,0 +1,60 @@
+{% extends "chart/base.html" %}
+
+{% load static %}
+
+{% block content %}
+      <div class="page-header">
+        <h1>Chart of Accounts</h1>
+      </div>
+      <div class="col-xs-12">
+        {% for chart in charts %}
+          <h2>{{ chart.name }}</h2>
+        {% endfor %}
+        <div class="col-xs-4">
+          <h2>assets = </h2>
+          <h3>{{ charts.0.equation.assets }}</h3> 
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.0.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.0.balance }}<p>
+          </div>
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.3.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.3.balance }}</p>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <h2>liabilities +</h2> 
+          <h3>{{ charts.0.equation.liabilities }}</h3>
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.1.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.1.balance }}</p>
+          </div>
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.4.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.4.balance }}</p>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <h2>equity</h2>
+          <h3>{{ charts.0.equation.equity }}</h3>
+          <div class="col-xs-2">
+            <h6>{{ charts.0.accounts.2.name }}</h6>
+          </div>
+          <div class="col-xs-2">
+            <p>{{ charts.0.accounts.2.balance }}</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
+      <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
+
+{% endblock %}

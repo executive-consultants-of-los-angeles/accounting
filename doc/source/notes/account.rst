@@ -1,5 +1,9 @@
-Account
-=======
+========
+Accounts
+========
+
+Account Notes
+=============
 
 What is an account?
 -------------------
@@ -28,20 +32,10 @@ We can test the type for its presence in a pre-defined list.
 
 We can test the transactions elsewhere.
 
-How do we test these qualities?
--------------------------------
 
-Names should contain only letters.
+Account Modules
+===============
 
-Numbers should contain only numbers.
+.. toctree::
 
-Types should be one of the following: [asset, liability, equity, revenue, expense].
-
-.. topic:: Equation
-
-   assets = liabilities + equity
-
-   This makes accounts that can reconcile only those of the first three types.
-
-
-Some thanks due to `smallbusinessdoer.com <http://www.smallbusinessdoer.com/lessons/ae-cheat-sheet-part-4-the-5-main-types-of-accounts/>`_. 
+   modules/account

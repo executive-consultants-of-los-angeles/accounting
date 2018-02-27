@@ -1,4 +1,9 @@
 accounting.egg-info/
+migrations/
+.*cache*
+*egg*
+coverage/
+py/
 .coverage
 *.pyc
 coverage.xml
@@ -9,3 +14,5 @@ build/
 dist/
 __pycache__/
 .cache/
+node_modules/
+static/docs/

@@ -1,7 +1,13 @@
 Transaction Model
 =================
 
-.. currentmodule:: transaction.transaction
+.. currentmodule:: transaction
 
-.. autoclass:: Transaction
-   :members:
+.. autosummary:: transaction
+   :toctree:
+
+
+.. automodule:: transaction
+
+
+.. autoclass:: transaction.models.Transaction

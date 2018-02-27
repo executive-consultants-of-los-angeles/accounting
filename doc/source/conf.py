@@ -19,15 +19,14 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
+import os
 import sys
-sys.path.insert(0, '/srv/accounting')
-sys.path.insert(0, '/srv/accounting/account')
-sys.path.insert(0, '/srv/accounting/account/tests')
-sys.path.insert(0, '/srv/accounting/chart')
-sys.path.insert(0, '/srv/accounting/chart/tests')
-sys.path.insert(0, '/srv/accounting/transaction')
-sys.path.insert(0, '/srv/accounting/transaction/tests')
+import django
+
+sys.path.append(os.path.join(os.path.dirname(__name__), '../..'))
+
+
+django.setup()
 
 
 # -- General configuration ------------------------------------------------
@@ -41,15 +40,27 @@ sys.path.insert(0, '/srv/accounting/transaction/tests')
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.autosectionlabel',
     'sphinx.ext.autosummary',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
+    'sphinx.ext.doctest',
+    'sphinx.ext.githubpages',
+    'sphinx.ext.graphviz',
     'sphinx.ext.ifconfig',
+    'sphinx.ext.inheritance_diagram',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.todo',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages']
+]
+
+autosummary_generate = True
+autodoc_default_flags = [
+    'members',
+    'inherited-members',
+    'show-inheritance'
+]
+autodoc_member_order = 'groupwise'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -121,11 +132,12 @@ html_static_path = ['_static']
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
 html_sidebars = {
     '**': [
-        'relations.html',  # needs 'show_related': True theme option to display
-        'searchbox.html',
+        'localtoc.html',
+        'globaltoc.html',
+        'sourcelink.html',
+        'searchbox.html'
     ]
 }
-
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -206,4 +218,8 @@ epub_exclude_files = ['search.html']
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3/', None),
+    'django': ('http://django.readthedocs.org/en/latest/', None),
+    'sphinx': ('http://sphinx.readthedocs.org/en/latest/', None),
+}
