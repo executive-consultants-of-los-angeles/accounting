@@ -15,6 +15,7 @@ from transaction.models import Transaction
 
 # Create your views here.
 
+
 def index(request):
     """Render the index for the Chart of Accounts.
 
@@ -22,9 +23,10 @@ def index(request):
     :type request: :any:`django:django.http.HttpRequest`
     :rtype: :any:`django:django.http.HttpResponse`
     """
-
-    for account in Account.objects.all():
+    for account in Account.objects.distinct():
+        print(account)
         transactions = Transaction.objects.filter(left_account=account).first()
+        print(transactions)
         account.balance = transactions.calculate_balance(account)
         account.save()
 

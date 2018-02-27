@@ -1,0 +1,284 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>django.views.generic.detail &#8212; accounting v0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     'v0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for django.views.generic.detail</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ImproperlyConfigured</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">Http404</span>
+<span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="k">import</span> <span class="n">gettext</span> <span class="k">as</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">django.views.generic.base</span> <span class="k">import</span> <span class="n">ContextMixin</span><span class="p">,</span> <span class="n">TemplateResponseMixin</span><span class="p">,</span> <span class="n">View</span>
+
+
+<span class="k">class</span> <span class="nc">SingleObjectMixin</span><span class="p">(</span><span class="n">ContextMixin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Provide the ability to retrieve a single object for further manipulation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">slug_field</span> <span class="o">=</span> <span class="s1">&#39;slug&#39;</span>
+    <span class="n">context_object_name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">slug_url_kwarg</span> <span class="o">=</span> <span class="s1">&#39;slug&#39;</span>
+    <span class="n">pk_url_kwarg</span> <span class="o">=</span> <span class="s1">&#39;pk&#39;</span>
+    <span class="n">query_pk_and_slug</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">get_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the object the view is displaying.</span>
+
+<span class="sd">        Require `self.queryset` and a `pk` or `slug` argument in the URLconf.</span>
+<span class="sd">        Subclasses can override this to return any object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Use a custom queryset if provided; this is required for subclasses</span>
+        <span class="c1"># like DateDetailView</span>
+        <span class="k">if</span> <span class="n">queryset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">queryset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">()</span>
+
+        <span class="c1"># Next, try looking up by primary key.</span>
+        <span class="n">pk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pk_url_kwarg</span><span class="p">)</span>
+        <span class="n">slug</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">slug_url_kwarg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">pk</span><span class="p">)</span>
+
+        <span class="c1"># Next, try looking up by slug.</span>
+        <span class="k">if</span> <span class="n">slug</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">pk</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_pk_and_slug</span><span class="p">):</span>
+            <span class="n">slug_field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_slug_field</span><span class="p">()</span>
+            <span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">slug_field</span><span class="p">:</span> <span class="n">slug</span><span class="p">})</span>
+
+        <span class="c1"># If none of those are defined, it&#39;s an error.</span>
+        <span class="k">if</span> <span class="n">pk</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">slug</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Generic detail view </span><span class="si">%s</span><span class="s2"> must be called with &quot;</span>
+                                 <span class="s2">&quot;either an object pk or a slug.&quot;</span>
+                                 <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Get the single item from the filtered queryset</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">queryset</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">Http404</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s2">&quot;No </span><span class="si">%(verbose_name)s</span><span class="s2"> found matching the query&quot;</span><span class="p">)</span> <span class="o">%</span>
+                          <span class="p">{</span><span class="s1">&#39;verbose_name&#39;</span><span class="p">:</span> <span class="n">queryset</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">verbose_name</span><span class="p">})</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the `QuerySet` that will be used to look up the object.</span>
+
+<span class="sd">        This method is called by the default implementation of get_object() and</span>
+<span class="sd">        may not be called if get_object() is overridden.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_default_manager</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ImproperlyConfigured</span><span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="si">%(cls)s</span><span class="s2"> is missing a QuerySet. Define &quot;</span>
+                    <span class="s2">&quot;</span><span class="si">%(cls)s</span><span class="s2">.model, </span><span class="si">%(cls)s</span><span class="s2">.queryset, or override &quot;</span>
+                    <span class="s2">&quot;</span><span class="si">%(cls)s</span><span class="s2">.get_queryset().&quot;</span> <span class="o">%</span> <span class="p">{</span>
+                        <span class="s1">&#39;cls&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">queryset</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_slug_field</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the name of a slug field to be used to look up by slug.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">slug_field</span>
+
+    <span class="k">def</span> <span class="nf">get_context_object_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the name to use for the object.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">context_object_name</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">context_object_name</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">model_name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Insert the single object into the context dict.&quot;&quot;&quot;</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">:</span>
+            <span class="n">context</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span>
+            <span class="n">context_object_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_context_object_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">context_object_name</span><span class="p">:</span>
+                <span class="n">context</span><span class="p">[</span><span class="n">context_object_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">BaseDetailView</span><span class="p">(</span><span class="n">SingleObjectMixin</span><span class="p">,</span> <span class="n">View</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A base view for displaying a single object.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="nb">object</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">render_to_response</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">SingleObjectTemplateResponseMixin</span><span class="p">(</span><span class="n">TemplateResponseMixin</span><span class="p">):</span>
+    <span class="n">template_name_field</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">template_name_suffix</span> <span class="o">=</span> <span class="s1">&#39;_detail&#39;</span>
+
+    <span class="k">def</span> <span class="nf">get_template_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a list of template names to be used for the request. May not be</span>
+<span class="sd">        called if render_to_response() is overridden. Return the following list:</span>
+
+<span class="sd">        * the value of ``template_name`` on the view (if provided)</span>
+<span class="sd">        * the contents of the ``template_name_field`` field on the</span>
+<span class="sd">          object instance that the view is operating upon (if available)</span>
+<span class="sd">        * ``&lt;app_label&gt;/&lt;model_name&gt;&lt;template_name_suffix&gt;.html``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_template_names</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">ImproperlyConfigured</span><span class="p">:</span>
+            <span class="c1"># If template_name isn&#39;t specified, it&#39;s not a problem --</span>
+            <span class="c1"># we just start with an empty list.</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># If self.template_name_field is set, grab the value of the field</span>
+            <span class="c1"># of that name from the object; this is the most specific template</span>
+            <span class="c1"># name, if given.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name_field</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name_field</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+                    <span class="n">names</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+            <span class="c1"># The least-specific option is the default &lt;app&gt;/&lt;model&gt;_detail.html;</span>
+            <span class="c1"># only use this if the object in question is a model.</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+                <span class="n">object_meta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">_meta</span>
+                <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s%s</span><span class="s2">.html&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">object_meta</span><span class="o">.</span><span class="n">app_label</span><span class="p">,</span>
+                    <span class="n">object_meta</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">template_name_suffix</span>
+                <span class="p">))</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">issubclass</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+                <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s%s</span><span class="s2">.html&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">app_label</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">template_name_suffix</span>
+                <span class="p">))</span>
+
+            <span class="c1"># If we still haven&#39;t managed to find any template names, we should</span>
+            <span class="c1"># re-raise the ImproperlyConfigured to alert the user.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">names</span><span class="p">:</span>
+                <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">names</span>
+
+
+<span class="k">class</span> <span class="nc">DetailView</span><span class="p">(</span><span class="n">SingleObjectTemplateResponseMixin</span><span class="p">,</span> <span class="n">BaseDetailView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Render a &quot;detail&quot; view of an object.</span>
+
+<span class="sd">    By default this is a model instance looked up from `self.queryset`, but the</span>
+<span class="sd">    view will support display of *any* object by overriding `self.get_object()`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul class="globaltoc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notes/gaap.html">GAAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notes/transaction.html">Transactions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notes/transaction.html#transaction-modules">Transaction Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/modules/transaction.html">transaction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notes/transaction.html#transaction-theory">Transaction Theory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/transaction.html#transaction-as-the-atom-of-accounting">Transaction as the Atom of Accounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/transaction.html#testing-transactions">Testing Transactions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notes/account.html">Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notes/account.html#account-notes">Account Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/account.html#what-is-an-account">What is an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/account.html#what-the-fundamental-parts-of-an-account">What the fundamental parts of an account?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/account.html#what-are-the-qualities-of-an-account-that-can-be-tested">What are the qualities of an account that can be tested?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notes/account.html#account-modules">Account Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/modules/account.html">account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/modules/account.html#account-tests">account_tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../notes/chart-of-accounts.html">Chart of Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notes/chart-of-accounts.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notes/chart-of-accounts.html#approach">Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../notes/chart-of-accounts.html#chart-modules">Chart Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../notes/chart-of-accounts.html#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, ECLA.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

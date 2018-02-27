@@ -16,9 +16,8 @@ docker exec newhart /srv/newhart/newhart/manage.py migrate
 docker exec newhart python setup.py build
 docker exec newhart python setup.py test
 docker exec newhart python setup.py install
-docker exec newhart pytest
 docker exec newhart coverage run --source='./newhart' setup.py test
 docker exec newhart coverage xml
 
 docker exec newhart python-codacy-coverage
-docker stop newhart
+docker rm -f newhart

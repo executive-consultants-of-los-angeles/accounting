@@ -6,9 +6,12 @@
 .. moduleauthor:: info@gahan-corporation.com
 
 """
+# pylint: disable=too-few-public-methods
 from django.db import models
+from django.forms import ModelForm
 
 from chart.models import Chart
+
 
 # Create your models here.
 class Account(models.Model):
@@ -67,3 +70,13 @@ class Account(models.Model):
     def __str__(self):
         """String for repr."""
         return "{} {}".format(self.number, self.name)
+
+
+class AccountForm(ModelForm):
+    """Class that defines account objects."""
+    class Meta:
+        """Meta class for AccountForm."""
+        #: Use all fields by default.
+        fields = "__all__"
+        #: This form references the Account model.
+        model = Account
