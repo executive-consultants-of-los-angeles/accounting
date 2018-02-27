@@ -10,12 +10,11 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 
 from account.models import Account
-from account.models import AccountForm
 
 # Create your views here.
 
 
-def index(request):
+def index(request, account_id=0):
     """Render the index for the account app.
 
     :param request: A request from Django.
@@ -24,16 +23,12 @@ def index(request):
     :raises: AttributeError, KeyError
     """
     context = {'accounts': Account.objects.all().order_by('number').values()}
-    if request.method == "POST":
-        formset = AccountForm(
-            request.POST,
-        ).as_table()
-        if formset.is_valid():
-            formset.save()
-    else:
-        formset = AccountForm().as_table()
 
-    context.update({'formset': formset})
+    if account_id:
+        context.update({
+            'edit_account': Account.objects.filter(id=account_id).values()[0]
+        })
+
     return render(request, 'account/account.html', context)
 
 

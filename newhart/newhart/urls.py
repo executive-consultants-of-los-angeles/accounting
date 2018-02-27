@@ -23,6 +23,9 @@ Including another URLconf
 urlpatterns = [
     path('', views.index, name='home'),
     path('account/', account_views.index, name='accounts_list'),
+    path('account/edit/<int:account_id>',
+         account_views.index,
+         name='edit_account'),
     path('account/update/<int:account_id>',
          account_views.update,
          name='update_account'),
