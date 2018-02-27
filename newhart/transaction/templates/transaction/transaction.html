@@ -1,0 +1,56 @@
+{% extends 'chart/base.html' %}
+
+{% load static %}
+
+{% block content %}
+      <div class="page-header">
+        <h1>Transactions</h1>
+      </div>
+
+      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+      <div class="col-xs-12">
+      {% for transaction in transactions %}
+        <div class="col-xs-11">
+          {% if transaction.id == edit_transaction.id %}
+            <form action="{% url 'update_transaction' transaction.id %}" method="post">
+              {% csrf_token %}
+              <div class="col-xs-3"><input type="text" name="" value="{{ transaction.number }}" /></div>
+              <div class="col-xs-3"><input type="text" name="" value="{{ transaction.name }}" /></div>
+              <div class="col-xs-3">{{ transaction.kind }} {{ transaction.balance }}</div>
+              <div class="col-xs-3"><input type="submit" value="Update" /></div> 
+            </form>
+          {% else %}
+            <div class="col-xs-3">{{ transaction.left_account }}</div>
+            <div class="col-xs-3">{{ transaction.right_account }}</div>
+            <div class="col-xs-3">{{ transaction.description }}</div>
+            <div class="col-xs-3">{{ transaction.amount }}</div>
+          {% endif %}
+        </div>
+        <div class="col-xs-1 text-right">
+          <a href="{% url 'edit_transaction' transaction.id %}" class="glyphicon glyphicon-pencil"></a>
+          <a href="{% url 'delete_transaction' transaction.id %}" class="glyphicon glyphicon-minus"></a>
+        </div>
+        <div class="col-xs-11">
+          <div class="col-xs-3">{{ transaction.right_account }}</div>
+          <div class="col-xs-3">{{ transaction.left_account }}</div>
+          <div class="col-xs-3">{{ transaction.description }}</div>
+          <div class="col-xs-3 text-right">{{ transaction.amount }}</div>
+        </div>
+      {% endfor %}
+      </div>
+      <form method="POST" action="{% url 'add_transaction' %}" method="post">
+        {% csrf_token %}
+        <div class="col-xs-3">
+          <label for="amount">Amount&nbsp;</label><input type="text" name="amount" />
+        </div>
+        <div class="col-xs-3">
+          <label for="left_account">Debit&nbsp;</input><input type="text" name="left_account" />
+        </div>
+        <div class="col-xs-3">
+          <label for="right_account">Credit&nbsp;</label><input type="text" name="right_account" />
+        </div>
+        <div class="col-xs-3">
+          <input type="submit" value="Add" />
+        </div>
+      </form>
+{% endblock %}

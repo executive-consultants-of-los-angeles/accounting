@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path
 from chart import views
 from account import views as account_views
+from transaction import views as transaction
 
 """
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -33,4 +34,12 @@ urlpatterns = [
     path('account/delete/<int:account_id>',
          account_views.delete, name='delete_account'),
     path('admin/', admin.site.urls),
+    path('transaction/', transaction.index, name='transactions'),
+    path('transaction/add', transaction.add, name='add_transaction'),
+    path('transaction/edit/<int:transaction_id>',
+         transaction.index, name='edit_transaction'),
+    path('transaction/update/<int:transaction_id>',
+         transaction.update, name='update_transaction'),
+    path('transaction/delete/<int:transaction_id>',
+         transaction.delete, name='delete_transaction'),
 ]
