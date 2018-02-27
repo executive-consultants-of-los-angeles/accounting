@@ -11,6 +11,7 @@ from chart.models import Chart
 
 newhart.loadapps.main()
 
+
 @pytest.fixture(scope='function')
 def charts():
     """Save and return a chart object."""
@@ -27,10 +28,12 @@ def charts():
         local_chart.save()
     return {'chart': Chart, 'id': local_chart.id}
 
+
 @pytest.fixture(scope='session')
 def chart():
     """Return a Chart object."""
     return Chart
+
 
 @pytest.fixture(scope='session')
 def account():

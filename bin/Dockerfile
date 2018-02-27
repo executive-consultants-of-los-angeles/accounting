@@ -18,4 +18,4 @@ ENV CODACY_PROJECT_TOKEN 61a8f55ecf394f68a0b4c2d1c0f14d8a
 ENV CC_TEST_REPORTER_ID 82428da430f003a16e79bb4da19d1f4b045712dee9c8dff967462c6580a1b567
 RUN pip install -r /srv/newhart/.requirements
 EXPOSE 8000
-CMD newhart/manage.py runserver
+CMD newhart/manage.py runserver 0.0.0.0:8000
