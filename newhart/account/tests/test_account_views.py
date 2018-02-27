@@ -20,7 +20,7 @@ class TestAccountViews(object):
         """Get the index for testing.
 
         :return: :any:`django:django.http.HttpResponse`
-        :raises: :any:`AttributeError`
+        :raises: :any:`AssertionError`
         """
         response = self.client.get('/')
         if response.status_code != 200:
