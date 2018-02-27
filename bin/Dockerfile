@@ -9,7 +9,7 @@ RUN apk add git
 RUN apk add postgresql
 RUN apk add postgresql-dev
 RUN apk add build-base
-RUN wget https://codeclimate.com/downloads/test-reporter/ test-reporter-latest-linux-amd64 -O /usr/bin/cc-test-reporter; chmod +x /usr/bin/cc-test-reporter
+RUN wget https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -O /usr/bin/cc-test-reporter; chmod +x /usr/bin/cc-test-reporter
 RUN git clone https://github.com/gahan-corporation/newhart.git /srv/newhart
 WORKDIR /srv/newhart
 RUN git checkout v0.0.1
