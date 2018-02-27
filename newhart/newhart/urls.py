@@ -27,5 +27,7 @@ urlpatterns = [
     path('account/update',
          AccountUpdate.as_view(template_name="account_update.html"),
          name='accounts_update'),
+    path('account/delete/<int:account_id>',
+         account_views.delete, name='delete_account'),
     path('admin/', admin.site.urls),
 ]
