@@ -23,6 +23,7 @@ Including another URLconf
 urlpatterns = [
     path('', views.index, name='home'),
     path('account/', account_views.index, name='accounts_list'),
+    path('account/add', account_views.add, name='add_account'),
     path('account/edit/<int:account_id>',
          account_views.index,
          name='edit_account'),

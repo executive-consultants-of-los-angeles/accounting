@@ -32,6 +32,24 @@ def index(request, account_id=0):
     return render(request, 'account/account.html', context)
 
 
+def add(request):
+    """Add an account then return the original view.
+
+    :param request: A request from Django.
+    :type request: :any:`django:django.http.HttpRequest`
+    """
+    post = request.POST
+
+    account = Account(
+        chart_id=1,
+        name=post.get('name'),
+        number=post.get('number'))
+
+    account.save()
+
+    return redirect('accounts_list')
+
+
 def update(request, account_id):
     """Update an account then return the original view.
 
