@@ -3,9 +3,44 @@
 {% load static %}
 
 {% block content %}
+      <div class="page-header">
+        <h1>Transactions</h1>
+      </div>
 
-<div class="page-header">
-  <h1>Transactions</h1>
-</div>
-
+      {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+      <div class="col-xs-12">
+      {% for transaction in transactions %}
+        <div class="col-xs-10">
+          {% if transaction.id == edit_transaction.id %}
+            <form action="{% url 'update_transaction' transaction.id %}" method="post">
+              {% csrf_token %}
+              <div class="col-xs-3"><input type="text" name="number" value="{{ transaction.number }}" /></div>
+              <div class="col-xs-3"><input type="text" name="name" value="{{ transaction.name }}" /></div>
+              <div class="col-xs-3">{{ transaction.kind }} {{ transaction.balance }}</div>
+              <div class="col-xs-3"><input type="submit" value="Update" /></div> 
+            </form>
+          {% else %}
+            <div class="col-xs-3">{{ transaction.number }}</div>
+            <div class="col-xs-3">{{ transaction.name }}</div>
+            <div class="col-xs-3">{{ transaction.kind }} {{ transaction.balance }}</div>
+            <div class="col-xs-3">
+              <a href="{% url 'edit_transaction' transaction.id %}" class="glyphicon glyphicon-pencil"></a>
+              <a href="{% url 'delete_transaction' transaction.id %}" class="glyphicon glyphicon-minus"></a>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+      </div>
+      <form method="POST" action="{% url 'add_transaction' %}" method="post">
+        {% csrf_token %}
+        <div class="col-xs-3">
+          <input type="text" name="number" />
+        </div>
+        <div class="col-xs-3">
+          <input type="text" name="name" />
+        </div>
+        <div class="col-xs-6">
+          <input type="submit" value="Add" />
+        </div>
+      </form>
 {% endblock %}
