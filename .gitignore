@@ -7,6 +7,7 @@ py/
 .coverage
 *.pyc
 coverage.xml
+py/
 build/
 .eggs/
 *.swp
