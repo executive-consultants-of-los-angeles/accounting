@@ -8,7 +8,6 @@
 # pylint: disable=no-member,invalid-name
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.views.generic.edit import FormView
 
 from account.models import Account
 from account.models import AccountForm
@@ -38,8 +37,8 @@ def index(request):
     return render(request, 'account/account.html', context)
 
 
-def delete(request, account_id):
-    """Delete an account and all related data.
+def update(request, account_id):
+    """Update an account then return the original view.
 
     :param request: A request from Django.
     :type request: :any:`django:django.http.HttpRequest`
@@ -50,14 +49,13 @@ def delete(request, account_id):
     return redirect('accounts_list')
 
 
-class AccountUpdate(FormView):
-    """Generic view for updating Account."""
+def delete(request, account_id):
+    """Delete an account and all related data.
 
-    #: This view references the Account model.
-    model = Account
-    #: Only list number and name fields.
-    fields = [
-        'number', 'name'
-    ]
-    #: Set the template file name suffix.
-    template_name_suffix = '_update'
+    :param request: A request from Django.
+    :type request: :any:`django:django.http.HttpRequest`
+    """
+    Account.objects.filter(id=account_id).delete()
+    print(request)
+
+    return redirect('accounts_list')

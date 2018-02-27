@@ -12,6 +12,7 @@ from django.forms import ModelForm
 
 from chart.models import Chart
 
+
 # Create your models here.
 class Account(models.Model):
     """Class that defines account objects.

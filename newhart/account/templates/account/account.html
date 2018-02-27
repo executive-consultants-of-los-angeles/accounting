@@ -9,13 +9,16 @@
 
       <div class="col-xs-12">
       {% for account in accounts %}
-        <div class="col-xs-9">
+        <div class="col-xs-10">
           <div class="col-xs-3">{{ account.number }}</div>
           <div class="col-xs-3">{{ account.name }}</div>
           <div class="col-xs-3">{{ account.kind }}</div>
           <div class="col-xs-3">{{ account.balance }}</div> 
         </div>
-        <div class="col-xs-3"><a href="{% url 'delete_account' account.id %}">-</a></div>
+        <div class="col-xs-2">
+          <div class="col-xs-1"><a href="{% url 'update_account' account.id %}" class="glyphicon glyphicon-pencil"></a></div>
+          <div class="col-xs-1"><a href="{% url 'delete_account' account.id %}" class="glyphicon glyphicon-minus"></a></div>
+        </div>
       {% endfor %}
       </div>
       <form method="POST" action="">

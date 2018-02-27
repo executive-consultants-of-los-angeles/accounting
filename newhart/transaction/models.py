@@ -12,6 +12,7 @@ from django.db import models
 from account.models import Account
 # Create your models here.
 
+
 class Transaction(models.Model):
     """Transaction model class.
 
